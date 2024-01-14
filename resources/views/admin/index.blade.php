@@ -7,7 +7,15 @@
 @stop
 
 @section('content')
-    <p>Aqui puedes actulizar tus tablas</p>
+    <p>Aqui puedes actulizar tus tablas del Torneo de Futbol Softtware 2024</p>
+
+    <div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            @livewire('ingresos')
+        </div>     
+    </div>   
+    </div>
 @stop
 
 @section('css')
