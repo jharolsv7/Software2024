@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,3 +24,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 //Route Hooks - Do not delete//
 	Route::view('ingresos', 'livewire.ingresos.index')->middleware('auth');
+
+Route::get('/inicio', [AdminController::class, 'index'])->name('admin.index');
