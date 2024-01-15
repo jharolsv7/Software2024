@@ -20,7 +20,8 @@ class Jugadore extends Model
      */
     public function equipo()
     {
-        return $this->hasOne('App\Models\Equipo', 'id', 'equipo_id');
+        //return $this->hasOne('App\Models\Equipo', 'id', 'equipo_id');
+        return $this->belongsTo(Equipo::class);
     }
     
 }

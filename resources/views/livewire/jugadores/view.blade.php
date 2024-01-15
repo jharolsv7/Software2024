@@ -34,8 +34,8 @@
 								<td>#</td> 
 								<th>Nombre</th>
 								<th>Numero</th>
-								<th>Numerogoles</th>
-								<th>Equipo Id</th>
+								<th>Numero de Goles</th>
+								<th>Equipo</th>
 								<td>ACTIONS</td>
 							</tr>
 						</thead>
@@ -45,8 +45,13 @@
 								<td>{{ $loop->iteration }}</td> 
 								<td>{{ $row->nombre }}</td>
 								<td>{{ $row->numero }}</td>
-								<td>{{ $row->numeroGoles }}</td>
-								<td>{{ $row->equipo_id }}</td>
+								<td>{{ $row->numeroGoles }}</td>				
+								<td>@if ($row->equipo)
+										{{ $row->equipo->nombre }}
+									@else
+										<span class="text-muted">Seleccione un Equipo</span>
+									@endif
+								</td>
 								<td width="90">
 								<div class="btn-group">
 									<button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

@@ -35,12 +35,12 @@
 								<th>Nombre</th>
 								<th>Logo</th>
 								<th>Eslogan</th>
-								<th>Nombremadrina</th>
-								<th>Inscripcionmonto</th>
+								<th>Nombre de la Madrina</th>
+								<th>Monto de Inscripcion</th>
 								<th>Puntos</th>
 								<th>Grupo</th>
-								<th>Goles A Favor</th>
-								<th>Goles En Contra</th>
+								<th>Goles a Favor</th>
+								<th>Goles en Contra</th>
 								<td>ACTIONS</td>
 							</tr>
 						</thead>

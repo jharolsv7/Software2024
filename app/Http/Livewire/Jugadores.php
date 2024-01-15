@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Jugadore;
+use App\Models\Equipo;
 
 class Jugadores extends Component
 {
@@ -24,6 +25,7 @@ class Jugadores extends Component
 						->orWhere('numeroGoles', 'LIKE', $keyWord)
 						->orWhere('equipo_id', 'LIKE', $keyWord)
 						->paginate(10),
+                        'equipos' => Equipo::all(), // Obtén la lista de equipos
         ]);
     }
 	
@@ -59,7 +61,7 @@ class Jugadores extends Component
         
         $this->resetInput();
 		$this->emit('closeModal');
-		session()->flash('message', 'Jugadore Successfully created.');
+		session()->flash('message', 'Jugador creado exitosamente.');
     }
 
     public function edit($id)
@@ -95,7 +97,7 @@ class Jugadores extends Component
 
             $this->resetInput();
             $this->updateMode = false;
-			session()->flash('message', 'Jugadore Successfully updated.');
+			session()->flash('message', 'Jugador actualizado exitosamente.');
         }
     }
 

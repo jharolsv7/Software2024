@@ -3,7 +3,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="createDataModalLabel">Create New Equipo</h5>
+                <h5 class="modal-title" id="createDataModalLabel">Crear un Equipo</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                      <span aria-hidden="true close-btn">×</span>
                 </button>
@@ -24,11 +24,11 @@
             </div>
             <div class="form-group">
                 <label for="nombreMadrina"></label>
-                <input wire:model="nombreMadrina" type="text" class="form-control" id="nombreMadrina" placeholder="Nombremadrina">@error('nombreMadrina') <span class="error text-danger">{{ $message }}</span> @enderror
+                <input wire:model="nombreMadrina" type="text" class="form-control" id="nombreMadrina" placeholder="Nombre de la Madrina">@error('nombreMadrina') <span class="error text-danger">{{ $message }}</span> @enderror
             </div>
             <div class="form-group">
                 <label for="inscripcionMonto"></label>
-                <input wire:model="inscripcionMonto" type="text" class="form-control" id="inscripcionMonto" placeholder="Inscripcionmonto">@error('inscripcionMonto') <span class="error text-danger">{{ $message }}</span> @enderror
+                <input wire:model="inscripcionMonto" type="text" class="form-control" id="inscripcionMonto" placeholder="Monto de la Inscripcion">@error('inscripcionMonto') <span class="error text-danger">{{ $message }}</span> @enderror
             </div>
             <div class="form-group">
                 <label for="puntos"></label>

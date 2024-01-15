@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Equipo;
+use App\Models\Models;
 
 class Equipos extends Component
 {
