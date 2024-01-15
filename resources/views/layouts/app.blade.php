@@ -37,7 +37,7 @@
                     <ul class="navbar-nav mr-auto">
 						<!--Nav Bar Hooks - Do not delete!!-->
 						<li class="nav-item">
-                            <a href="{{ url('/ingresos') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Ingresos</a> 
+                            <a href="{{ url('/equipos') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Equipos</a> 
                         </li>
                     </ul>
 					@endauth()
