@@ -42,6 +42,9 @@
                         <li class="nav-item">
                             <a href="{{ url('/equipos') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Equipos</a> 
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ url('/ingresos') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Ingresos</a> 
+                        </li>
                     </ul>
 					@endauth()
 					
