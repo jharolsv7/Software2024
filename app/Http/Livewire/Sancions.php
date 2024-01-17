@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Sancion;
+use App\Models\Jugador;
 
 class Sancions extends Component
 {
@@ -23,7 +24,13 @@ class Sancions extends Component
 						->orWhere('fecha', 'LIKE', $keyWord)
 						->orWhere('jugador_id', 'LIKE', $keyWord)
 						->paginate(10),
+                        'jugadors' => $this->getJugadors(),
         ]);
+    }
+
+    public function getJugadors()
+    {
+        return Jugador::all();
     }
 	
     public function cancel()

@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Jugador;
+use App\Models\Equipo;
 
 class Jugadors extends Component
 {
@@ -23,7 +24,13 @@ class Jugadors extends Component
 						->orWhere('numeroGoles', 'LIKE', $keyWord)
 						->orWhere('equipo_id', 'LIKE', $keyWord)
 						->paginate(10),
+                        'equipos' => Equipo::all(), // Agregamos la lista de equipos aquí
         ]);
+    }
+
+    public function getEquipos()
+    {
+        return Equipo::all();
     }
 	
     public function cancel()

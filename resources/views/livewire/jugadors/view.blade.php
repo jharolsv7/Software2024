@@ -7,7 +7,7 @@
 					<div style="display: flex; justify-content: space-between; align-items: center;">
 						<div class="float-left">
 							<h4><i class="fab fa-laravel text-info"></i>
-							Jugador Listing </h4>
+							Tabla Jugador </h4>
 						</div>
 						@if (session()->has('message'))
 						<div wire:poll.4s class="btn btn-sm btn-success" style="margin-top:0px; margin-bottom:0px;"> {{ session('message') }} </div>
@@ -16,7 +16,7 @@
 							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Search Jugadors">
 						</div>
 						<div class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#createDataModal">
-						<i class="fa fa-plus"></i>  Add Jugadors
+						<i class="fa fa-plus"></i>  Agregar Jugador
 						</div>
 					</div>
 				</div>
@@ -30,8 +30,8 @@
 								<td>#</td> 
 								<th>Nombre</th>
 								<th>Numero</th>
-								<th>Numerogoles</th>
-								<th>Equipo Id</th>
+								<th>Numero de Goles</th>
+								<th>Equipo</th>
 								<td>ACTIONS</td>
 							</tr>
 						</thead>
@@ -42,7 +42,7 @@
 								<td>{{ $row->nombre }}</td>
 								<td>{{ $row->numero }}</td>
 								<td>{{ $row->numeroGoles }}</td>
-								<td>{{ $row->equipo_id }}</td>
+								<td>{{ $row->equipo->nombre }}</td>
 								<td width="90">
 									<div class="dropdown">
 										<a class="btn btn-sm btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
