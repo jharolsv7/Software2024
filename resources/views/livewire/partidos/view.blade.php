@@ -51,8 +51,8 @@
 								<td>{{ $row->golesEquipo2 }}</td>
 								<td>{{ $row->tarjetaAmarilla }}</td>
 								<td>{{ $row->tarjetaRoja }}</td>
-								<td>{{ $row->equipo_uno }}</td>
-								<td>{{ $row->equipo_dos }}</td>
+								<td>{{ $row->equipo->nombre }}</td>
+								<td>{{ $row->equipo->nombre }}</td>
 								<td width="90">
 									<div class="dropdown">
 										<a class="btn btn-sm btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

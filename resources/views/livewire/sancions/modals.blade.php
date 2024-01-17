@@ -21,10 +21,15 @@
                         <input wire:model="fecha" type="date" class="form-control" id="fecha" placeholder="Fecha">@error('fecha') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="jugador_id"></label>
-                        <input wire:model="jugador_id" type="text" class="form-control" id="jugador_id" placeholder="Jugador Id">@error('jugador_id') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <label for="jugador_id">Jugador:</label>
+                        <select wire:model="jugador_id" class="form-control">
+                            <option value="">Seleccione un jugador</option>
+                            @foreach($jugadors as $jugador)
+                                <option value="{{ $jugador->id }}">{{ $jugador->nombre }}</option>
+                            @endforeach
+                        </select>
+                        @error('jugador_id') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
-
                 </form>
             </div>
             <div class="modal-footer">
@@ -59,8 +64,14 @@
                         <input wire:model="fecha" type="date" class="form-control" id="fecha" placeholder="Fecha">@error('fecha') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="jugador_id"></label>
-                        <input wire:model="jugador_id" type="text" class="form-control" id="jugador_id" placeholder="Jugador Id">@error('jugador_id') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <label for="jugador_id">Jugador:</label>
+                        <select wire:model="jugador_id" class="form-control">
+                            <option value="">Seleccione un jugador</option>
+                            @foreach($jugadors as $jugador)
+                                <option value="{{ $jugador->id }}">{{ $jugador->nombre }}</option>
+                            @endforeach
+                        </select>
+                        @error('jugador_id') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
 
                 </form>
