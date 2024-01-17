@@ -10,11 +10,11 @@
 				<form>
                     <div class="form-group">
                         <label for="fecha"></label>
-                        <input wire:model="fecha" type="text" class="form-control" id="fecha" placeholder="Fecha">@error('fecha') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <input wire:model="fecha" type="date" class="form-control" id="fecha" placeholder="Fecha">@error('fecha') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
                         <label for="hora"></label>
-                        <input wire:model="hora" type="text" class="form-control" id="hora" placeholder="Hora">@error('hora') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <input wire:model="hora" type="time" class="form-control" id="hora" placeholder="Hora">@error('hora') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
                         <label for="ubicacion"></label>
@@ -22,11 +22,11 @@
                     </div>
                     <div class="form-group">
                         <label for="golesEquipo1"></label>
-                        <input wire:model="golesEquipo1" type="text" class="form-control" id="golesEquipo1" placeholder="Goles del Primer Equipo">@error('golesEquipo1') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <input wire:model="golesEquipo1" type="number" class="form-control" id="golesEquipo1" placeholder="Goles del Primer Equipo">@error('golesEquipo1') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
                         <label for="golesEquipo2"></label>
-                        <input wire:model="golesEquipo2" type="text" class="form-control" id="golesEquipo2" placeholder="Goles del Segundo Equipo">@error('golesEquipo2') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <input wire:model="golesEquipo2" type="number" class="form-control" id="golesEquipo2" placeholder="Goles del Segundo Equipo">@error('golesEquipo2') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
                         <label for="tarjetaAmarilla"></label>
@@ -68,11 +68,11 @@
 					<input type="hidden" wire:model="selected_id">
                     <div class="form-group">
                         <label for="fecha"></label>
-                        <input wire:model="fecha" type="text" class="form-control" id="fecha" placeholder="Fecha">@error('fecha') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <input wire:model="fecha" type="date" class="form-control" id="fecha" placeholder="Fecha">@error('fecha') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
                         <label for="hora"></label>
-                        <input wire:model="hora" type="text" class="form-control" id="hora" placeholder="Hora">@error('hora') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <input wire:model="hora" type="time" class="form-control" id="hora" placeholder="Hora">@error('hora') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
                         <label for="ubicacion"></label>
@@ -80,11 +80,11 @@
                     </div>
                     <div class="form-group">
                         <label for="golesEquipo1"></label>
-                        <input wire:model="golesEquipo1" type="text" class="form-control" id="golesEquipo1" placeholder="Goles del Primer Equipo">@error('golesEquipo1') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <input wire:model="golesEquipo1" type="number" class="form-control" id="golesEquipo1" placeholder="Goles del Primer Equipo">@error('golesEquipo1') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
                         <label for="golesEquipo2"></label>
-                        <input wire:model="golesEquipo2" type="text" class="form-control" id="golesEquipo2" placeholder="Goles del Segundo Equipo">@error('golesEquipo2') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <input wire:model="golesEquipo2" type="number" class="form-control" id="golesEquipo2" placeholder="Goles del Segundo Equipo">@error('golesEquipo2') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
                         <label for="tarjetaAmarilla"></label>
