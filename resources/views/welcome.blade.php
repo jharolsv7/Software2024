@@ -12,7 +12,7 @@
         <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
         <!-- Styles -->  
     </head>
-    <body class="antialiased bg-no-repeat bg-cover bg-center" style="background-image: url('https://cdn.pixabay.com/photo/2018/05/15/23/02/football-stadium-3404535_1280.jpg');">
+    <body class="antialiased bg-no-repeat bg-cover bg-center" style="background-image: url('https://cdn.pixabay.com/photo/2015/05/18/13/36/stadium-772259_1280.jpg');">
         <!--ENCABEZADO -->
         <div class="border-t border-b flex items-center justify-between px-5 py-1">
             <div class="">
@@ -41,7 +41,7 @@
         <br>
         <!--SEGUNDA SECCIÓN-->
         <div class="flex px-5 m-auto">
-            <div class="w-full h-64 ">
+            <div class="w-full h-64 relative overflow-hidden transition-transform transform origin-center hover:scale-105 ease-in-out duration-300">
                 <img src="https://img.freepik.com/vector-premium/banner-torneo-futbol-pelota_18591-21711.jpg?w=360" alt="Descripción de la imagen" class="w-full h-64 px-20">
             </div>
             <div class="w-full bg-sky-blue-400 p-2 space-y-2 text-center text-white">
@@ -113,7 +113,7 @@
                             <th>10</th>
                             <th>4</th>
                             <th>6</th>
-                             <th>6</th>
+                            <th>6</th>
                         </tr>
                     </tbody>
                 </table>

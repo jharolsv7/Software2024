@@ -17,7 +17,7 @@ class Ingresos extends Component
     {
 		$keyWord = '%'.$this->keyWord .'%';
         return view('livewire.ingresos.view', [
-            'ingresos' => Ingreso::latest()
+            'ingresos' => Ingreso::oldest()
 						->orWhere('detalles', 'LIKE', $keyWord)
 						->orWhere('monto', 'LIKE', $keyWord)
 						->paginate(10),
@@ -49,7 +49,7 @@ class Ingresos extends Component
         
         $this->resetInput();
 		$this->dispatchBrowserEvent('closeModal');
-		session()->flash('message', 'Ingreso Successfully created.');
+		session()->flash('message', 'Ingreso creado exitosamente.');
     }
 
     public function edit($id)
@@ -76,7 +76,7 @@ class Ingresos extends Component
 
             $this->resetInput();
             $this->dispatchBrowserEvent('closeModal');
-			session()->flash('message', 'Ingreso Successfully updated.');
+			session()->flash('message', 'Ingreso actualizado correctamente.');
         }
     }
 

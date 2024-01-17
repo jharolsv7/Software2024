@@ -14,11 +14,11 @@
                     </div>
                     <div class="form-group">
                         <label for="numero"></label>
-                        <input wire:model="numero" type="text" class="form-control" id="numero" placeholder="Numero">@error('numero') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <input wire:model="numero" type="number" class="form-control" id="numero" placeholder="Numero">@error('numero') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
                         <label for="numeroGoles"></label>
-                        <input wire:model="numeroGoles" type="text" class="form-control" id="numeroGoles" placeholder="Numero de Goles">@error('numeroGoles') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <input wire:model="numeroGoles" type="number" class="form-control" id="numeroGoles" placeholder="Numero de Goles">@error('numeroGoles') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
                         <label for="equipo_id">Equipo:</label>
@@ -57,11 +57,11 @@
                     </div>
                     <div class="form-group">
                         <label for="numero"></label>
-                        <input wire:model="numero" type="text" class="form-control" id="numero" placeholder="Numero">@error('numero') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <input wire:model="numero" type="number" class="form-control" id="numero" placeholder="Numero">@error('numero') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
                         <label for="numeroGoles"></label>
-                        <input wire:model="numeroGoles" type="text" class="form-control" id="numeroGoles" placeholder="Numero de Goles">@error('numeroGoles') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <input wire:model="numeroGoles" type="number" class="form-control" id="numeroGoles" placeholder="Numero de Goles">@error('numeroGoles') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
                         <label for="equipo_id">Equipo:</label>
