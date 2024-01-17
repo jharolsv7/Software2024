@@ -3,7 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1 class="text-center">Torneo Fútbol Software 2024</h1>
+    <h1 class="text-center">TORNEO DE FÚTBOL SOFTWARE 2024</h1>
 @stop
 
 @section('content')
