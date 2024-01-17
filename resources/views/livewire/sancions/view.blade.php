@@ -31,7 +31,7 @@
 								<th>Tipo</th>
 								<th>Monto</th>
 								<th>Fecha</th>
-								<th>Jugador Id</th>
+								<th>Jugador</th>
 								<td>ACTIONS</td>
 							</tr>
 						</thead>
@@ -42,7 +42,7 @@
 								<td>{{ $row->tipo }}</td>
 								<td>{{ $row->monto }}</td>
 								<td>{{ $row->fecha }}</td>
-								<td>{{ $row->jugador_id }}</td>
+								<td>{{ $row->jugador->nombre }}</td>
 								<td width="90">
 									<div class="dropdown">
 										<a class="btn btn-sm btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

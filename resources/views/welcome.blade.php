@@ -113,7 +113,7 @@
                             <th>10</th>
                             <th>4</th>
                             <th>6</th>
-                            <th>6</th>
+                             <th>6</th>
                         </tr>
                     </tbody>
                 </table>
