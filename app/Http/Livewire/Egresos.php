@@ -17,7 +17,7 @@ class Egresos extends Component
     {
 		$keyWord = '%'.$this->keyWord .'%';
         return view('livewire.egresos.view', [
-            'egresos' => Egreso::latest()
+            'egresos' => Egreso::oldest()
 						->orWhere('detalles', 'LIKE', $keyWord)
 						->orWhere('monto', 'LIKE', $keyWord)
 						->paginate(10),
@@ -49,7 +49,7 @@ class Egresos extends Component
         
         $this->resetInput();
 		$this->dispatchBrowserEvent('closeModal');
-		session()->flash('message', 'Egreso Successfully created.');
+		session()->flash('message', 'Egreso creado exitosamente.');
     }
 
     public function edit($id)
@@ -76,7 +76,7 @@ class Egresos extends Component
 
             $this->resetInput();
             $this->dispatchBrowserEvent('closeModal');
-			session()->flash('message', 'Egreso Successfully updated.');
+			session()->flash('message', 'Egreso actualizado exitosamente.');
         }
     }
 

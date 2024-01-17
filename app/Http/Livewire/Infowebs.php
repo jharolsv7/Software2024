@@ -4,11 +4,13 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use Livewire\WithPagination;
+use Livewire\WithFileUploads; // Agrega esta línea
 use App\Models\Infoweb;
 
 class Infowebs extends Component
 {
     use WithPagination;
+    use WithFileUploads; // Agrega esta línea
 
 	protected $paginationTheme = 'bootstrap';
     public $selected_id, $keyWord, $fecha_campeonato, $foto_sitio, $informacion;
@@ -17,7 +19,7 @@ class Infowebs extends Component
     {
 		$keyWord = '%'.$this->keyWord .'%';
         return view('livewire.infowebs.view', [
-            'infowebs' => Infoweb::latest()
+            'infowebs' => Infoweb::oldest()
 						->orWhere('fecha_campeonato', 'LIKE', $keyWord)
 						->orWhere('foto_sitio', 'LIKE', $keyWord)
 						->orWhere('informacion', 'LIKE', $keyWord)
@@ -51,7 +53,7 @@ class Infowebs extends Component
         
         $this->resetInput();
 		$this->dispatchBrowserEvent('closeModal');
-		session()->flash('message', 'Infoweb Successfully created.');
+		session()->flash('message', 'Infoweb creado exitosamente.');
     }
 
     public function edit($id)
@@ -79,7 +81,7 @@ class Infowebs extends Component
 
             $this->resetInput();
             $this->dispatchBrowserEvent('closeModal');
-			session()->flash('message', 'Infoweb Successfully updated.');
+			session()->flash('message', 'Infoweb actualizado existosamente.');
         }
     }
 

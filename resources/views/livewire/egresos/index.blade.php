@@ -1,10 +1,11 @@
+@extends('adminlte::page')
 @extends('layouts.app')
 @section('content')
-<div class="container-fluid">
-    <div class="row justify-content-center">
-        <div class="col-md-12">
+<div class='container-fluid'>
+    <div class='row jutify-content-center'>
+        <div class='col-md-12'>
             @livewire('egresos')
-        </div>     
-    </div>   
+        </div>
+    </div>
 </div>
 @endsection

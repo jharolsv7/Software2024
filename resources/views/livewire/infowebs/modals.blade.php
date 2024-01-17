@@ -3,18 +3,18 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="createDataModalLabel">Crear una nueva Informacion del Sitio</h5>
+                <h5 class="modal-title" id="createDataModalLabel">Crear Nueva Informacion del Sitio</h5>
                 <button wire:click.prevent="cancel()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
            <div class="modal-body">
 				<form>
                     <div class="form-group">
                         <label for="fecha_campeonato"></label>
-                        <input wire:model="fecha_campeonato" type="text" class="form-control" id="fecha_campeonato" placeholder="Fecha del Campeonato">@error('fecha_campeonato') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <input wire:model="fecha_campeonato" type="date" class="form-control" id="fecha_campeonato" placeholder="Fecha del Campeonato">@error('fecha_campeonato') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
                         <label for="foto_sitio"></label>
-                        <input wire:model="foto_sitio" type="text" class="form-control" id="foto_sitio" placeholder="Foto del Sitio">@error('foto_sitio') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <input wire:model="foto_sitio" type="file" class="form-control" id="foto_sitio" placeholder="Foto del Sitio">@error('foto_sitio') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
                         <label for="informacion"></label>
@@ -24,8 +24,8 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary close-btn" data-bs-dismiss="modal">Close</button>
-                <button type="button" wire:click.prevent="store()" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-secondary close-btn" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" wire:click.prevent="store()" class="btn btn-primary">Guardar</button>
             </div>
         </div>
     </div>
@@ -36,7 +36,7 @@
     <div class="modal-dialog" role="document">
        <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="updateModalLabel">Actualizar Informacion de Web</h5>
+                <h5 class="modal-title" id="updateModalLabel">Actualizar Informacion del Sitio</h5>
                 <button wire:click.prevent="cancel()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -44,11 +44,11 @@
 					<input type="hidden" wire:model="selected_id">
                     <div class="form-group">
                         <label for="fecha_campeonato"></label>
-                        <input wire:model="fecha_campeonato" type="text" class="form-control" id="fecha_campeonato" placeholder="Fecha de Campeonato">@error('fecha_campeonato') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <input wire:model="fecha_campeonato" type="date" class="form-control" id="fecha_campeonato" placeholder="Fecha de Campeonato">@error('fecha_campeonato') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
                         <label for="foto_sitio"></label>
-                        <input wire:model="foto_sitio" type="text" class="form-control" id="foto_sitio" placeholder="Foto del Sitio">@error('foto_sitio') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <input wire:model="foto_sitio" type="file" class="form-control" id="foto_sitio" placeholder="Foto del Sitio">@error('foto_sitio') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
                         <label for="informacion"></label>
@@ -58,8 +58,8 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" wire:click.prevent="cancel()" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" wire:click.prevent="update()" class="btn btn-primary">Save</button>
+                <button type="button" wire:click.prevent="cancel()" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" wire:click.prevent="update()" class="btn btn-primary">Guardar</button>
             </div>
        </div>
     </div>

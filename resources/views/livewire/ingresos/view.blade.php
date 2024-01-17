@@ -7,7 +7,7 @@
 					<div style="display: flex; justify-content: space-between; align-items: center;">
 						<div class="float-left">
 							<h4><i class="fab fa-laravel text-info"></i>
-							Ingreso Listing </h4>
+							Tabla de Ingresos </h4>
 						</div>
 						@if (session()->has('message'))
 						<div wire:poll.4s class="btn btn-sm btn-success" style="margin-top:0px; margin-bottom:0px;"> {{ session('message') }} </div>
@@ -16,7 +16,7 @@
 							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Search Ingresos">
 						</div>
 						<div class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#createDataModal">
-						<i class="fa fa-plus"></i>  Add Ingresos
+						<i class="fa fa-plus"></i>  Agregar Nuevo Ingreso
 						</div>
 					</div>
 				</div>
@@ -30,7 +30,7 @@
 								<td>#</td> 
 								<th>Detalles</th>
 								<th>Monto</th>
-								<td>ACTIONS</td>
+								<td>Acciones</td>
 							</tr>
 						</thead>
 						<tbody>
@@ -40,20 +40,21 @@
 								<td>{{ $row->detalles }}</td>
 								<td>{{ $row->monto }}</td>
 								<td width="90">
-									<div class="dropdown">
-										<a class="btn btn-sm btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-											Actions
-										</a>
-										<ul class="dropdown-menu">
-											<li><a data-bs-toggle="modal" data-bs-target="#updateDataModal" class="dropdown-item" wire:click="edit({{$row->id}})"><i class="fa fa-edit"></i> Edit </a></li>
-											<li><a class="dropdown-item" onclick="confirm('Confirm Delete Ingreso id {{$row->id}}? \nDeleted Ingresos cannot be recovered!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Delete </a></li>  
-										</ul>
-									</div>								
+									<div class="d-flex justify-content-center">
+										<div class="btn-group">
+											<button type="button" class="btn btn-sm btn-primary rounded d-inline-flex align-items-center" data-bs-toggle="modal" data-bs-target="#updateDataModal" wire:click="edit({{$row->id}})">
+												<i class="fa fa-edit me-1"></i> Editar
+											</button>
+											<button type="button" class="btn btn-sm btn-danger rounded ms-1 d-inline-flex align-items-center" onclick="confirm('Confirm Delete Egreso id {{$row->id}}? \nDeleted Egresos cannot be recovered!') || event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})">
+												<i class="fa fa-trash me-1"></i> Eliminar
+											</button>
+										</div>   
+									</div>
 								</td>
 							</tr>
 							@empty
 							<tr>
-								<td class="text-center" colspan="100%">No data Found </td>
+								<td class="text-center" colspan="100%">No hay datos</td>
 							</tr>
 							@endforelse
 						</tbody>
