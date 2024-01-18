@@ -30,14 +30,14 @@
                     </div>
                     <div class="form-group">
                         <label for="tarjetaAmarilla"></label>
-                        <input wire:model="tarjetaAmarilla" type="text" class="form-control" id="tarjetaAmarilla" placeholder="Tarjetas Amarillas">@error('tarjetaAmarilla') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <input wire:model="tarjetaAmarilla" type="number" class="form-control" id="tarjetaAmarilla" placeholder="Tarjetas Amarillas">@error('tarjetaAmarilla') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
                         <label for="tarjetaRoja"></label>
-                        <input wire:model="tarjetaRoja" type="text" class="form-control" id="tarjetaRoja" placeholder="Tarjetas Rojas">@error('tarjetaRoja') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <input wire:model="tarjetaRoja" type="number" class="form-control" id="tarjetaRoja" placeholder="Tarjetas Rojas">@error('tarjetaRoja') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="equipo_uno">Equipo:</label>
+                        <label for="equipo_uno">Equipo 1:</label>
                         <select wire:model="equipo_uno" class="form-control">
                             <option value="">Seleccione un equipo</option>
                             @foreach($equipos as $equipo)
@@ -47,7 +47,7 @@
                         @error('equipo_id') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="equipo_dos">Equipo:</label>
+                        <label for="equipo_dos">Equipo 2:</label>
                         <select wire:model="equipo_dos" class="form-control">
                             <option value="">Seleccione un equipo</option>
                             @foreach($equipos as $equipo)
@@ -60,8 +60,8 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary close-btn" data-bs-dismiss="modal">Close</button>
-                <button type="button" wire:click.prevent="store()" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-secondary close-btn" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" wire:click.prevent="store()" class="btn btn-primary">Guardar</button>
             </div>
         </div>
     </div>
@@ -72,42 +72,42 @@
     <div class="modal-dialog" role="document">
        <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="updateModalLabel">Actualizar un Partido</h5>
+                <h5 class="modal-title" id="updateModalLabel">Actualizar Partido</h5>
                 <button wire:click.prevent="cancel()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form>
 					<input type="hidden" wire:model="selected_id">
                     <div class="form-group">
-                        <label for="fecha"></label>
+                        <label for="fecha">Fecha Partido</label>
                         <input wire:model="fecha" type="date" class="form-control" id="fecha" placeholder="Fecha">@error('fecha') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="hora"></label>
+                        <label for="hora">Hora Partido</label>
                         <input wire:model="hora" type="time" class="form-control" id="hora" placeholder="Hora">@error('hora') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="ubicacion"></label>
+                        <label for="ubicacion">Ubicación</label>
                         <input wire:model="ubicacion" type="text" class="form-control" id="ubicacion" placeholder="Ubicacion">@error('ubicacion') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="golesEquipo1"></label>
+                        <label for="golesEquipo1">Goles Equipo-1</label>
                         <input wire:model="golesEquipo1" type="number" class="form-control" id="golesEquipo1" placeholder="Goles del Primer Equipo">@error('golesEquipo1') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="golesEquipo2"></label>
+                        <label for="golesEquipo2">Goles Equipo-2</label>
                         <input wire:model="golesEquipo2" type="number" class="form-control" id="golesEquipo2" placeholder="Goles del Segundo Equipo">@error('golesEquipo2') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="tarjetaAmarilla"></label>
+                        <label for="tarjetaAmarilla">Tarjetas Amarillas</label>
                         <input wire:model="tarjetaAmarilla" type="text" class="form-control" id="tarjetaAmarilla" placeholder="Tarjetas Amarillas">@error('tarjetaAmarilla') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="tarjetaRoja"></label>
+                        <label for="tarjetaRoja">Tarjetas Rojas</label>
                         <input wire:model="tarjetaRoja" type="text" class="form-control" id="tarjetaRoja" placeholder="Tarjetas Rojas">@error('tarjetaRoja') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="equipo_uno">Equipo:</label>
+                        <label for="equipo_uno">Equipo 1:</label>
                         <select wire:model="equipo_uno" class="form-control">
                             <option value="">Seleccione un equipo</option>
                             @foreach($equipos as $equipo)
@@ -117,7 +117,7 @@
                         @error('equipo_id') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="equipo_dos">Equipo:</label>
+                        <label for="equipo_dos">Equipo 2:</label>
                         <select wire:model="equipo_dos" class="form-control">
                             <option value="">Seleccione un equipo</option>
                             @foreach($equipos as $equipo)
@@ -130,8 +130,8 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" wire:click.prevent="cancel()" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" wire:click.prevent="update()" class="btn btn-primary">Save</button>
+                <button type="button" wire:click.prevent="cancel()" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" wire:click.prevent="update()" class="btn btn-primary">Guardar</button>
             </div>
        </div>
     </div>
