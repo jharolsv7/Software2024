@@ -356,7 +356,7 @@ return [
         [
             'text'       => 'Reglas',
             'icon' => 'fas fa-ruler',
-            'url'        => '#',
+            'url'        => '/img/REGLAS.pdf',
         ],
     ],
 
