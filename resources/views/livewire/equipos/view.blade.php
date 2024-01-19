@@ -25,9 +25,9 @@
 						@include('livewire.equipos.modals')
 				<div class="table-responsive">
 					<table class="table table-bordered table-sm">
-						<thead class="thead text-center">
-							<tr class=""> 
-								<th>#</th> 
+						<thead class="thead">
+							<tr> 
+								<td>ID</td> 
 								<th>Nombre</th>
 								<th>Logo</th>
 								<th>Eslogan</th>

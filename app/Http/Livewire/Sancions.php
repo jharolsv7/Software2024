@@ -18,7 +18,7 @@ class Sancions extends Component
     {
 		$keyWord = '%'.$this->keyWord .'%';
         return view('livewire.sancions.view', [
-            'sancions' => Sancion::latest()
+            'sancions' => Sancion::oldest()
 						->orWhere('tipo', 'LIKE', $keyWord)
 						->orWhere('monto', 'LIKE', $keyWord)
 						->orWhere('fecha', 'LIKE', $keyWord)

@@ -27,7 +27,7 @@
 					<table class="table table-bordered table-sm">
 						<thead class="thead">
 							<tr> 
-								<td>#</td> 
+								<td>ID</td> 
 								<th>Fecha Campeonato</th>
 								<th>Foto Sitio</th>
 								<th>Informacion</th>
@@ -44,7 +44,7 @@
 								<td width="90">
 									<div class="d-flex justify-content-center">
 										<div class="btn-group">
-											<button type="button" class="btn btn-sm btn-primary rounded d-inline-flex align-items-center" data-bs-toggle="modal" data-bs-target="#updateDataModal" wire:click="edit({{$row->id}})">
+											<button type="button" class="btn btn-sm btn-primary rounded d-inline-flex align-items-center" data-bs-toggle="modal" data-bs-target="IDupdateDataModal" wire:click="edit({{$row->id}})">
 												<i class="fa fa-edit me-1"></i> Editar
 											</button>
 											<button type="button" class="btn btn-sm btn-danger rounded ms-1 d-inline-flex align-items-center" onclick="confirm('Confirm Delete Egreso id {{$row->id}}? \nDeleted Egresos cannot be recovered!') || event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})">
