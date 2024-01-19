@@ -17,7 +17,7 @@ class Equipos extends Component
     {
 		$keyWord = '%'.$this->keyWord .'%';
         return view('livewire.equipos.view', [
-            'equipos' => Equipo::latest()
+            'equipos' => Equipo::oldest()
 						->orWhere('nombre', 'LIKE', $keyWord)
 						->orWhere('logo', 'LIKE', $keyWord)
 						->orWhere('eslogan', 'LIKE', $keyWord)
@@ -75,7 +75,7 @@ class Equipos extends Component
         
         $this->resetInput();
 		$this->dispatchBrowserEvent('closeModal');
-		session()->flash('message', 'Equipo Successfully created.');
+		session()->flash('message', 'Equipo creado exitosamente.');
     }
 
     public function edit($id)
@@ -121,7 +121,7 @@ class Equipos extends Component
 
             $this->resetInput();
             $this->dispatchBrowserEvent('closeModal');
-			session()->flash('message', 'Equipo Successfully updated.');
+			session()->flash('message', 'Equipo actualizado exitosamente.');
         }
     }
 
