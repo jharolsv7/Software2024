@@ -64,7 +64,7 @@ class Jugadors extends Component
         
         $this->resetInput();
 		$this->dispatchBrowserEvent('closeModal');
-		session()->flash('message', 'Jugador Successfully created.');
+		session()->flash('message', 'Jugador creado exitosamente.');
     }
 
     public function edit($id)
@@ -97,7 +97,7 @@ class Jugadors extends Component
 
             $this->resetInput();
             $this->dispatchBrowserEvent('closeModal');
-			session()->flash('message', 'Jugador Successfully updated.');
+			session()->flash('message', 'Jugador actualizado existosamente.');
         }
     }
 

@@ -27,7 +27,7 @@
 					<table class="table table-bordered table-sm">
 						<thead class="thead">
 							<tr> 
-								<td>ID</td> 
+								<th>ID</th> 
 								<th>Nombre</th>
 								<th>Logo</th>
 								<th>Eslogan</th>
