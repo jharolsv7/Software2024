@@ -13,7 +13,7 @@
 						<div wire:poll.4s class="btn btn-sm btn-success" style="margin-top:0px; margin-bottom:0px;"> {{ session('message') }} </div>
 						@endif
 						<div>
-							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Search Sancions">
+							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Buscar Sanciones">
 						</div>
 						<div class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#createDataModal">
 						<i class="fa fa-plus"></i>Agregar Sanciones
@@ -27,7 +27,7 @@
 					<table class="table table-bordered table-sm">
 						<thead class="thead">
 							<tr> 
-								<td>ID</td> 
+								<th>ID</th> 
 								<th>Tipo</th>
 								<th>Monto</th>
 								<th>Fecha</th>
