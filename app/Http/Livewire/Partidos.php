@@ -18,7 +18,7 @@ class Partidos extends Component
     {
 		$keyWord = '%'.$this->keyWord .'%';
         return view('livewire.partidos.view', [
-            'partidos' => Partido::latest()
+            'partidos' => Partido::oldest()
 						->orWhere('fecha', 'LIKE', $keyWord)
 						->orWhere('hora', 'LIKE', $keyWord)
 						->orWhere('ubicacion', 'LIKE', $keyWord)
