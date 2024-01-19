@@ -1,4 +1,4 @@
-@extends('layouts.main', ['class' => 'off-canvas-sidebar', 'activePage' => 'login', 'title' => __('Booking')])
+@extends('layouts.main', ['class' => 'off-canvas-sidebar', 'activePage' => 'login', 'title' => __('SOFTWARE LEAGUE')])
 
 @section('content')
 <div class="container" style="height: auto;">
@@ -14,7 +14,7 @@
                     <div class="card-header card-header-primary text-center">
                         <h4 class="card-title"><strong>{{ __('Login') }}</strong></h4>
                         <div class="social-line">
-                            <a href="#" class="btn btn-just-icon btn-link btn-white">
+                            <a href="https://www.facebook.com/profile.php?id=100090413760146&locale=es_LA" class="btn btn-just-icon btn-link btn-white">
                                 <i class="fa fa-facebook-square"></i>
                             </a>
                             <a href="#" class="btn btn-just-icon btn-link btn-white">
@@ -88,7 +88,7 @@
                         </div>
                     </div>
                     <div class="card-footer justify-content-center">
-                        <button type="submit" class="btn btn-primary btn-link btn-lg">{{ __('Log in') }}</button>
+                        <button type="submit" class="btn  btn-link btn-lg">{{ __('Log in') }}</button>
                     </div>
                 </div>
             </form>
