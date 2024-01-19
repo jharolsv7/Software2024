@@ -52,7 +52,7 @@
 								<td>{{ $row->tarjetaAmarilla }}</td>
 								<td>{{ $row->tarjetaRoja }}</td>
 								<td>{{ $row->equipo->nombre }}</td>
-								<td>{{ $row->equipo->nombre }}</td>
+								<td>{{ $row->equipoDos->nombre }}</td>
 								<td width="90">
 									<div class="d-flex justify-content-center">
 										<div class="btn-group">

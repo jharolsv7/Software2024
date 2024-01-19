@@ -27,7 +27,7 @@
 					<table class="table table-bordered table-sm">
 						<thead class="thead">
 							<tr> 
-								<td>#</td> 
+								<td>ID</td> 
 								<th>Tipo</th>
 								<th>Monto</th>
 								<th>Fecha</th>

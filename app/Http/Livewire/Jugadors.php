@@ -18,7 +18,7 @@ class Jugadors extends Component
     {
 		$keyWord = '%'.$this->keyWord .'%';
         return view('livewire.jugadors.view', [
-            'jugadors' => Jugador::latest()
+            'jugadors' => Jugador::oldest()
 						->orWhere('nombre', 'LIKE', $keyWord)
 						->orWhere('numero', 'LIKE', $keyWord)
 						->orWhere('numeroGoles', 'LIKE', $keyWord)
