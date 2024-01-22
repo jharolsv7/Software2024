@@ -4,11 +4,13 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use Livewire\WithPagination;
+use Livewire\WithFileUploads; // Agrega esta línea
 use App\Models\Equipo;
 
 class Equipos extends Component
 {
     use WithPagination;
+	use WithFileUploads; // Agrega esta línea
 
 	protected $paginationTheme = 'bootstrap';
     public $selected_id, $keyWord, $nombre, $logo, $eslogan, $nombreMadrina, $inscripcionMonto, $puntos, $grupo, $goles_a_favor, $goles_en_contra;

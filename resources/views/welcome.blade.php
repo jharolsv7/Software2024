@@ -19,19 +19,19 @@
                 <img src="/img/ball.png" alt="Logo" class="w-50 h-20 rounded">
             </div>
             <div class="ml-10">
-                <ul class="list-none flex items-left">
-                    <li class="hover-item">
-                        <div class="link-container">
-                            <a href="#">INICIO</a>
-                        </div>
-                    </li>
-                    <li class="hover-item">
+            <ul class="list-none flex items-left">
+                <li class="hover-item">
                     <div class="link-container">
-                        <a href="/img/REGLAS.pdf" download="reglas_del_torneo.pdf">REGLAS</a>
+                        <a href="{{ url('/') }}">INICIO</a>
                     </div>
-                    </li>
-                </ul>
-            </div>
+                </li>
+                <li class="hover-item">
+                    <div class="link-container">
+                        <a href="/img/REGLAS.pdf" download="reglas_del_torneo.pdf">DESCARGAR REGLAS</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
 
             <!-- Estilos del Navbar -->
             <style>
@@ -76,171 +76,53 @@
             <div class="text-center text-3xl font-extrabold text-white">
                 <h1>TORNEO DE FÚTBOL SOFTWARE 2024</h1>
             </div>
-        <br>
+
         <!--SEGUNDA SECCIÓN-->
-        <div class="flex px-5 m-auto">
-            <div class="w-full h-64 relative overflow-hidden transition-transform transform origin-center hover:scale-105 ease-in-out duration-300">
-                <img src="/img/Espe-Latacunga.jpg" alt="Descripción de la imagen" class="w-full h-64 px-20">
-            </div>
-            <div class="w-full bg-sky-blue-400 p-2 space-y-2 text-center text-white">
-                <h1 class="text-green-400 dark:text-sky-400 text-xl font-bold">UNIVERSIDAD DE LAS FUERZAS ARMADAS ESPE-L</h1>
-                <h2 class="text-sky-500 dark:text-sky-400 text-lg font-bold">INGENIERÍA DE SOFTWARE</h2>
-                <p class="text-justify">La Carrera de Software de la Escuela Politécnica del Ejército (ESPE-L) organizó un emocionante torneo de fútbol que reunió a estudiantes, profesores y personal administrativo en un ambiente de camaradería y competencia deportiva. El evento, diseñado para fomentar el espíritu deportivo y fortalecer los lazos entre los miembros de la comunidad universitaria, contó con equipos representativos de diferentes niveles académicos.
-                </p>
+        <!--SEGUNDA SECCIÓN-->
+        <div class="flex justify-center items-center px-5 py-10 mx-auto bg-sky-blue-400 text-white">
+            <div class="max-w-lg mx-auto">
+                <!-- Imagen que ocupa todo el ancho -->
+                <div class="w-full h-64 relative overflow-hidden transition-transform transform origin-center hover:scale-105 ease-in-out duration-300">
+                    <img src="/img/Espe-Latacunga.jpg" alt="Descripción de la imagen" class="w-full h-full object-cover rounded-lg shadow-lg">
+                </div>
+                
+                <!-- Texto centrado debajo de la imagen -->
+                <div class="text-center mt-4">
+                    <h1 class="text-green-400 dark:text-sky-400 text-2xl font-bold">UNIVERSIDAD DE LAS FUERZAS ARMADAS ESPE-L</h1>
+                    <h2 class="text-sky-500 dark:text-sky-400 text-lg font-bold">INGENIERÍA DE SOFTWARE</h2>
+                    <p class="text-justify">La Carrera de Software de la Escuela Politécnica del Ejército (ESPE-L) organizó un emocionante torneo de fútbol que reunió a estudiantes, profesores y personal administrativo en un ambiente de camaradería y competencia deportiva. El evento, diseñado para fomentar el espíritu deportivo y fortalecer los lazos entre los miembros de la comunidad universitaria, contó con equipos representativos de diferentes niveles académicos.</p>
+                </div>
             </div>
         </div>
-        <br>
-        <!--TERCERA SECCIÓN-->
-        <div class="flex p-5">
-            <div class="w-full sm:w-1/2 p-2 m-2 border border-black">
-                <h2 class="text-center text-2xl font-semibold text-white">Tabla de Posiciones - Grupo A</h2>
-                <table class="w-full border-collapse border border-black mt-2 text-center">
-                    <thead class="bg-blue-800">
-                        <tr>
-                            <th class="border border-black px-4 py-2 text-white">Equipo</th>
-                            <th class="border border-black px-4 py-2 text-white">PJ</th>
-                            <th class="border border-black px-4 py-2 text-white">PG</th>
-                            <th class="border border-black px-4 py-2 text-white">PE</th>
-                            <th class="border border-black px-4 py-2 text-white">PP</th>
-                            <th class="border border-black px-4 py-2 text-white">GF</th>
-                            <th class="border border-black px-4 py-2 text-white">GC</th>
-                            <th class="border border-black px-4 py-2 text-white">DG</th>
-                            <th class="border border-black px-4 py-2 text-white">Pts</th>
-                        </tr>
-                    </thead>
-                    <tbody class="bg-blue-600">
-                        <tr>
-                            <th>Software</th>
-                            <th>3</th>
-                            <th>2</th>
-                            <th>0</th>
-                            <th>1</th>
-                            <th>10</th>
-                            <th>4</th>
-                            <th>6</th>
-                            <th>6</th>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
 
-            <div class="w-full sm:w-1/2 p-2 m-2 border border-black">
-                <h2 class="text-center text-2xl font-semibold text-white">Tabla de Posiciones - Grupo B</h2>
-                <table class="w-full border-collapse border border-black mt-2 text-center">
-                    <thead class="bg-blue-800">
-                        <tr>
-                            <th class="border border-black px-4 py-2 text-white">Equipo</th>
-                            <th class="border border-black px-4 py-2 text-white">PJ</th>
-                            <th class="border border-black px-4 py-2 text-white">PG</th>
-                            <th class="border border-black px-4 py-2 text-white">PE</th>
-                            <th class="border border-black px-4 py-2 text-white">PP</th>
-                            <th class="border border-black px-4 py-2 text-white">GF</th>
-                            <th class="border border-black px-4 py-2 text-white">GC</th>
-                            <th class="border border-black px-4 py-2 text-white">DG</th>
-                            <th class="border border-black px-4 py-2 text-white">Pts</th>
-                        </tr>
-                    </thead>
-                
-                    <tbody class="bg-blue-600">
-                        <tr>
-                            <th>Software</th>
-                            <th>3</th>
-                            <th>2</th>
-                            <th>0</th>
-                            <th>1</th>
-                            <th>10</th>
-                            <th>4</th>
-                            <th>6</th>
-                            <th>6</th>
-                        </tr>
-                    </tbody>
-                </table>
+        <!-- TERCERA SECCIÓN -->
+        <div class="table-responsive flex justify-center p-5">
+            <!-- Tabla Grupo A -->
+            <div class="mr-4">
+                <h2 class="text-2xl font-bold mb-4 text-white text-center">Tabla de Posiciones Grupo A</h2>
+                @livewire('equipos-table', ['grupo' => 'A'])
+            </div>
+            <!-- Tabla Grupo B -->
+            <div class="ml-4">
+                <h2 class="text-2xl font-bold mb-4 text-white text-center">Tabla de Posiciones Grupo B</h2>
+                @livewire('equipos-table', ['grupo' => 'B'])
             </div>
         </div>
 
         <!--CUARTA SECCIÓN-->
-        <div class="flex px-5">
-            <div class="w-full sm:w-1/2 p-2 m-2 border border-black">
-                <h2 class="text-center text-2xl font-semibold text-white">GOLEADORES</h2>
-                <table class="w-full border-collapse border border-black mt-2 text-center">
-                    <thead class="bg-blue-800">
-                        <tr>
-                            <th class="border border-black px-4 py-2 text-white">Jugador</th>
-                            <th class="border border-black px-4 py-2 text-white">Equipo</th>
-                            <th class="border border-black px-4 py-2 text-white">Goles</th>
-                        </tr>
-                    </thead>
-                    <tbody class="bg-blue-600">
-                        <tr>    
-                            <th>Jharol</th>
-                            <th>Software</th>
-                            <th>5</th>
-                        </tr>
-                        <tr>    
-                            <th>Diego</th>
-                            <th>Software</th >
-                            <th >4</th >
-                        </tr>
-                        <tr>    
-                            <th>Darwin</th>
-                            <th>Software</th>
-                            <th>3</th>
-                        </tr>    
-                        <tr>    
-                            <th>Josue</th>
-                            <th>Software</th>
-                            <th>2</th>
-                        </tr>
-                        <tr>    
-                            <th>Joel</th>
-                            <th>Software</th>
-                            <th>1</th>
-                        </tr>
-                    </tbody>
-                </table>
+        <div class="flex justify-center p-5">
+            <div class="mr-4">
+                <h2 class="text-2xl font-bold mb-4 text-white text-center">Tabla de Goleadores</h2>
+                @livewire('jugadors-table')
             </div>
-
-            <div class="w-full sm:w-1/2 p-2 m-2 border border-black">
-                <h2 class="text-center text-2xl font-semibold text-white">PRÓXIMOS ENCUENTROS</h2>
-                <table class="w-full border-collapse border border-black mt-2 text-center">
-                    <thead class="bg-blue-800">
-                        <tr>
-                            <th class="border border-black px-4 py-2 text-white">Equipo Local</th>
-                            <th class="border border-black px-4 py-2 text-white">Equipo Visitante</th>
-                            <th class="border border-black px-4 py-2 text-white">Fecha</th>
-                        </tr>
-                    </thead>
-                    <tbody class="bg-blue-600">
-                        <tr>
-                            <th>Equipo 1A</th>
-                            <th>Equipo 2A</th>
-                            <th>01/02/2024</th>
-                        </tr>
-                        <tr>
-                            <th>Equipo 3A</th>
-                            <th>Equipo 4A</th>
-                            <th>02/02/2024</th>
-                        </tr>
-                        <tr>
-                            <th>Equipo 1B</th>
-                            <th>Equipo 2B</th>
-                            <th>03/02/2024</th>
-                        </tr>
-                        <tr>
-                            <th>Equipo 3B</th>
-                            <th>Equipo 4B</th>
-                            <th>04/02/2024</th>
-                        </tr>
-                        <tr>
-                            <th>Equipo 5A</th>
-                            <th>Equipo 6B</th>
-                            <th>05/02/2024</th>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="ml-4">
+                <h2 class="text-2xl font-bold mb-4 text-white text-center">Próximos Encuentros</h2>
+                @livewire('partidos-table')
             </div>
         </div>
         <br>
+
+        
 
         <!--QUINTA SECCIÓN-->
         <div class="footer bg-gray-900 p-5 text-center text-white">

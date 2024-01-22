@@ -14,7 +14,7 @@
                     </div>
                     <div class="form-group">
                         <label for="logo"></label>
-                        <input wire:model="logo" type="text" class="form-control" id="logo" placeholder="Logo">@error('logo') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <input  wire:model="logo" type="file" class="form-control" id="logo" placeholder="Logo del Equipo">@error('logo') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
                         <label for="eslogan"></label>
@@ -33,8 +33,15 @@
                         <input wire:model="puntos" type="number" class="form-control" id="puntos" placeholder="Puntos">@error('puntos') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="grupo"></label>
-                        <input wire:model="grupo" type="number" class="form-control" id="grupo" placeholder="Grupo" min="1" max="2">@error('grupo') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <label for="grupo">Seleccione un grupo:</label>
+                        <select wire:model="grupo" class="form-control" id="grupo">
+                            <option value="">-- Seleccionar Grupo --</option>
+                            <option value="A">Grupo A</option>
+                            <option value="B">Grupo B</option>
+                        </select>
+                        @error('grupo') 
+                            <span class="error text-danger">{{ $message }}</span> 
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label for="goles_a_favor"></label>
@@ -72,7 +79,7 @@
                     </div>
                     <div class="form-group">
                         <label for="logo">Logo</label>
-                        <input wire:model="logo" type="text" class="form-control" id="logo" placeholder="Logo">@error('logo') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <input  wire:model="logo" type="file" class="form-control" id="logo" placeholder="Logo del Equipo">@error('logo') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
                         <label for="eslogan">Slogan</label>
@@ -91,8 +98,15 @@
                         <input wire:model="puntos" type="number" class="form-control" id="puntos" placeholder="Puntos" min="0" step="1">@error('puntos') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="grupo">Grupo</label>
-                        <input wire:model="grupo" type="number" class="form-control" id="grupo" placeholder="Grupo" min="1" max="2">@error('grupo') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <label for="grupo">Seleccione un grupo:</label>
+                        <select wire:model="grupo" class="form-control" id="grupo">
+                            <option value="">-- Seleccionar Grupo --</option>
+                            <option value="A">Grupo A</option>
+                            <option value="B">Grupo B</option>
+                        </select>
+                        @error('grupo') 
+                            <span class="error text-danger">{{ $message }}</span> 
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label for="goles_a_favor">Goles a Favor</label>
