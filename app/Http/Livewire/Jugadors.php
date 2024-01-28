@@ -21,7 +21,6 @@ class Jugadors extends Component
             'jugadors' => Jugador::oldest()
 						->orWhere('nombre', 'LIKE', $keyWord)
 						->orWhere('numero', 'LIKE', $keyWord)
-						->orWhere('numeroGoles', 'LIKE', $keyWord)
 						->orWhere('equipo_id', 'LIKE', $keyWord)
 						->paginate(10),
                         'equipos' => Equipo::all(), // Agregamos la lista de equipos aquí
@@ -42,7 +41,6 @@ class Jugadors extends Component
     {		
 		$this->nombre = null;
 		$this->numero = null;
-		$this->numeroGoles = null;
 		$this->equipo_id = null;
     }
 
@@ -51,14 +49,12 @@ class Jugadors extends Component
         $this->validate([
 		'nombre' => 'required',
 		'numero' => 'required',
-		'numeroGoles' => 'required',
 		'equipo_id' => 'required',
         ]);
 
         Jugador::create([ 
 			'nombre' => $this-> nombre,
 			'numero' => $this-> numero,
-			'numeroGoles' => $this-> numeroGoles,
 			'equipo_id' => $this-> equipo_id
         ]);
         
@@ -73,7 +69,6 @@ class Jugadors extends Component
         $this->selected_id = $id; 
 		$this->nombre = $record-> nombre;
 		$this->numero = $record-> numero;
-		$this->numeroGoles = $record-> numeroGoles;
 		$this->equipo_id = $record-> equipo_id;
     }
 
@@ -82,7 +77,6 @@ class Jugadors extends Component
         $this->validate([
 		'nombre' => 'required',
 		'numero' => 'required',
-		'numeroGoles' => 'required',
 		'equipo_id' => 'required',
         ]);
 
@@ -91,7 +85,6 @@ class Jugadors extends Component
             $record->update([ 
 			'nombre' => $this-> nombre,
 			'numero' => $this-> numero,
-			'numeroGoles' => $this-> numeroGoles,
 			'equipo_id' => $this-> equipo_id
             ]);
 

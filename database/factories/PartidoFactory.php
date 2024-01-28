@@ -15,6 +15,7 @@ class PartidoFactory extends Factory
         return [
 			'fecha' => $this->faker->name,
 			'hora' => $this->faker->name,
+			'fase_id' => $this->faker->name,
 			'ubicacion' => $this->faker->name,
 			'golesEquipo1' => $this->faker->name,
 			'golesEquipo2' => $this->faker->name,
@@ -22,6 +23,7 @@ class PartidoFactory extends Factory
 			'tarjetaRoja' => $this->faker->name,
 			'equipo_uno' => $this->faker->name,
 			'equipo_dos' => $this->faker->name,
+			'ganador' => $this->faker->name,
         ];
     }
 }
