@@ -13,7 +13,7 @@ class Partido extends Model
 
     protected $table = 'partidos';
 
-    protected $fillable = ['fecha','hora','ubicacion','golesEquipo1','golesEquipo2','tarjetaAmarilla','tarjetaRoja','equipo_uno','equipo_dos'];
+    protected $fillable = ['fecha','hora','fase_id','ubicacion','golesEquipo1','golesEquipo2','tarjetaAmarilla','tarjetaRoja','equipo_uno','equipo_dos','ganador'];
 	
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
@@ -29,6 +29,14 @@ class Partido extends Model
     public function equipoDos()
     {
         return $this->belongsTo(Equipo::class, 'equipo_dos');
+    }
+    
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function fase()
+    {
+        return $this->belongsTo(Fase::class, 'fase_id');
     }
     
 }

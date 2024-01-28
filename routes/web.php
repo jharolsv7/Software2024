@@ -34,8 +34,13 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //Route Hooks - Do not delete//
-	Route::view('infoweb', 'livewire.infowebs.index')->middleware('auth');
+	Route::view('goleadores', 'livewire.goleadores.index')->middleware('auth');
 	Route::view('partidos', 'livewire.partidos.index')->middleware('auth');
+	Route::view('fase', 'livewire.fases.index')->middleware('auth');
+	Route::view('sancionequipo', 'livewire.sancionequipos.index')->middleware('auth');
+	Route::view('sancionjugador', 'livewire.sancionjugadors.index')->middleware('auth');
+	Route::view('inscripcion', 'livewire.inscripcions.index')->middleware('auth');
+	Route::view('infoweb', 'livewire.infowebs.index')->middleware('auth');
 	Route::view('sancion', 'livewire.sancions.index')->middleware('auth');
 	Route::view('jugador', 'livewire.jugadors.index')->middleware('auth');
 	Route::view('equipos', 'livewire.equipos.index')->middleware('auth');

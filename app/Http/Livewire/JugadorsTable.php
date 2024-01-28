@@ -15,7 +15,6 @@ class JugadorsTable extends Component
 
         $jugadores = Jugador::where('nombre', 'LIKE', $keyWord)
             ->orWhere('equipo_id', 'LIKE', $keyWord)
-            ->orderByDesc('numeroGoles', 'LIKE', $keyWord)
             ->paginate(10);
 
         return view('livewire.jugadors.table', compact('jugadores'));

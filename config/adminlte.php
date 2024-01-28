@@ -320,7 +320,7 @@ return [
         [
             'text' => ' Ingresos',
             'url'  => '/ingresos',
-            'icon' => 'far fa-money-bill-alt',
+            'icon' => 'fas fa-chart-line',
         ],
         [
             'text' => 'Egresos',
@@ -343,9 +343,29 @@ return [
             'icon' => 'fas fa-volleyball-ball',
         ],
         [
-            'text' => 'Sanciones',
-            'url'  => '/sancion',
+            'text' => 'Inscripcion',
+            'url'  => '/inscripcion',
+            'icon' => 'fab fa-wpforms',
+        ],
+        [
+            'text' => 'Sanciones del Jugador',
+            'url'  => '/sancionjugador',
+            'icon' => 'fas fa-user-minus',
+        ],
+        [
+            'text' => 'Sanciones del Equipo',
+            'url'  => '/sancionequipo',
             'icon' => 'fas fa-ban',
+        ],
+        [
+            'text' => 'Goleadores',
+            'url'  => '/goleadores',
+            'icon' => 'fas fa-medal',
+        ],
+        [
+            'text' => 'Fases del Torneo',
+            'url'  => '/fase',
+            'icon' => 'fab fa-megaport',
         ],
         ['header' => 'INFORMACIÓN'],
         [

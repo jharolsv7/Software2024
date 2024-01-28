@@ -30,6 +30,7 @@
 								<th>ID</th> 
 								<th>Fecha</th>
 								<th>Hora</th>
+								<th>Fase del Torneo</th>
 								<th>Ubicacion</th>
 								<th>Goles Equipo 1</th>
 								<th>Goles Equipo 2</th>
@@ -37,6 +38,7 @@
 								<th>Tarjetas Rojas</th>
 								<th>Equipo Uno</th>
 								<th>Equipo Dos</th>
+								<th>Ganador</th>
 								<th>Acciones</th>
 							</tr>
 						</thead>
@@ -46,6 +48,7 @@
 								<td>{{ $loop->iteration }}</td> 
 								<td>{{ $row->fecha }}</td>
 								<td>{{ $row->hora }}</td>
+								<td>{{ $row->fase->nombre_fase }}</td>
 								<td>{{ $row->ubicacion }}</td>
 								<td>{{ $row->golesEquipo1 }}</td>
 								<td>{{ $row->golesEquipo2 }}</td>
@@ -53,6 +56,7 @@
 								<td>{{ $row->tarjetaRoja }}</td>
 								<td>{{ $row->equipo->nombre }}</td>
 								<td>{{ $row->equipoDos->nombre }}</td>
+								<td>{{ $row->ganador }}</td>
 								<td width="90">
 									<div class="d-flex justify-content-center">
 										<div class="btn-group">

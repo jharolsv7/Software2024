@@ -14,7 +14,8 @@ class Equipos extends Component
 
 	protected $paginationTheme = 'bootstrap';
     public $selected_id, $keyWord, $nombre, $logo, $eslogan, $nombreMadrina, $inscripcionMonto, $puntos, $grupo, $goles_a_favor, $goles_en_contra;
-
+	protected $listeners = ['montoActualizado'];
+	public $fecha;
     public function render()
     {
 		$keyWord = '%'.$this->keyWord .'%';
@@ -33,6 +34,18 @@ class Equipos extends Component
         ]);
     }
 	
+	public function montoActualizado($monto)
+    {
+        $this->InscripcionMonto = $monto;
+        
+        // Actualizar monto en el modelo Equipo
+        $equipo = Equipo::find($this->selected_id);
+        $equipo->update(['inscripcionMonto' => $monto]);
+
+		// Emitir evento para forzar una actualización en Livewire
+        $this->emitSelf('refreshComponent');
+    }
+
     public function cancel()
     {
         $this->resetInput();
@@ -63,17 +76,31 @@ class Equipos extends Component
 		'goles_en_contra' => 'required',
         ]);
 
-        Equipo::create([ 
-			'nombre' => $this-> nombre,
-			'logo' => $this-> logo,
-			'eslogan' => $this-> eslogan,
-			'nombreMadrina' => $this-> nombreMadrina,
-			'inscripcionMonto' => $this-> inscripcionMonto,
-			'puntos' => $this-> puntos,
-			'grupo' => $this-> grupo,
-			'goles_a_favor' => $this-> goles_a_favor,
-			'goles_en_contra' => $this-> goles_en_contra
-        ]);
+        $equipo = Equipo::create([
+			'nombre' => $this->nombre,
+			'logo' => $this->logo,
+			'eslogan' => $this->eslogan,
+			'nombreMadrina' => $this->nombreMadrina,
+			'inscripcionMonto' => $this->inscripcionMonto,
+			'puntos' => $this->puntos,
+			'grupo' => $this->grupo,
+			'goles_a_favor' => $this->goles_a_favor,
+			'goles_en_contra' => $this->goles_en_contra,
+		]);
+
+		// Crear la relación solo si no existe
+		if (!$equipo->inscripcion) {
+			// Validar y establecer la fecha
+			$fecha = $this->fecha ?: now();
+
+			$equipo->inscripcion()->create([
+				'monto' => 0,
+				'fecha' => $fecha,
+				'descripcion' => "Generado Automaticamente",
+				'estado' => 0,
+				// Otros campos de la inscripción...
+			]);
+		}
         
         $this->resetInput();
 		$this->dispatchBrowserEvent('closeModal');
@@ -107,20 +134,26 @@ class Equipos extends Component
 		'goles_en_contra' => 'required',
         ]);
 
-        if ($this->selected_id) {
-			$record = Equipo::find($this->selected_id);
-            $record->update([ 
-			'nombre' => $this-> nombre,
-			'logo' => $this-> logo,
-			'eslogan' => $this-> eslogan,
-			'nombreMadrina' => $this-> nombreMadrina,
-			'inscripcionMonto' => $this-> inscripcionMonto,
-			'puntos' => $this-> puntos,
-			'grupo' => $this-> grupo,
-			'goles_a_favor' => $this-> goles_a_favor,
-			'goles_en_contra' => $this-> goles_en_contra
-            ]);
+		if ($this->selected_id) {
+			$equipo = Equipo::find($this->selected_id);
+			$equipo->update([
+				'nombre' => $this->nombre,
+				'logo' => $this->logo,
+				'eslogan' => $this->eslogan,
+				'nombreMadrina' => $this->nombreMadrina,
+				'inscripcionMonto' => $this->inscripcionMonto,
+				'puntos' => $this->puntos,
+				'grupo' => $this->grupo,
+				'goles_a_favor' => $this->goles_a_favor,
+				'goles_en_contra' => $this->goles_en_contra,
+			]);
 
+			// Actualizar la relación solo si existe
+			if ($equipo->inscripcion) {
+				$equipo->inscripcion->update([
+					'monto' => $this->inscripcionMonto
+				]);
+			}
             $this->resetInput();
             $this->dispatchBrowserEvent('closeModal');
 			session()->flash('message', 'Equipo actualizado exitosamente.');

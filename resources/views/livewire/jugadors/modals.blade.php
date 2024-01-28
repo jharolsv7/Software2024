@@ -17,10 +17,6 @@
                         <input wire:model="numero" type="number" class="form-control" id="numero" placeholder="Numero">@error('numero') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="numeroGoles"></label>
-                        <input wire:model="numeroGoles" type="number" class="form-control" id="numeroGoles" placeholder="Numero de Goles">@error('numeroGoles') <span class="error text-danger">{{ $message }}</span> @enderror
-                    </div>
-                    <div class="form-group">
                         <label for="equipo_id">Equipo:</label>
                         <select wire:model="equipo_id" class="form-control">
                             <option value="">Seleccione un equipo</option>
@@ -58,10 +54,6 @@
                     <div class="form-group">
                         <label for="numero">Numero:</label>
                         <input wire:model="numero" type="number" class="form-control" id="numero" placeholder="Numero">@error('numero') <span class="error text-danger">{{ $message }}</span> @enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="numeroGoles">Número de Goles:</label>
-                        <input wire:model="numeroGoles" type="number" class="form-control" id="numeroGoles" placeholder="Numero de Goles">@error('numeroGoles') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
                         <label for="equipo_id">Equipo:</label>

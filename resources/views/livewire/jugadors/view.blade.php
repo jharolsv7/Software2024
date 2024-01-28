@@ -30,7 +30,6 @@
 								<th>ID</th> 
 								<th>Nombre</th>
 								<th>Numero</th>
-								<th>Numero de Goles</th>
 								<th>Equipo</th>
 								<td>ACTIONS</td>
 							</tr>
@@ -41,7 +40,6 @@
 								<td>{{ $loop->iteration }}</td> 
 								<td>{{ $row->nombre }}</td>
 								<td>{{ $row->numero }}</td>
-								<td>{{ $row->numeroGoles }}</td>
 								<td>{{ $row->equipo->nombre }}</td>
 								<td width="90">
 									<div class="d-flex justify-content-center">

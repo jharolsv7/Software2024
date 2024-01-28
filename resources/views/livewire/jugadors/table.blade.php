@@ -4,7 +4,6 @@
         <tr>
             <th class="border px-4 py-2">Jugador</th>
             <th class="border px-4 py-2">Equipo</th>
-            <th class="border px-4 py-2">Goles</th>
             <!-- Agrega más columnas según tus necesidades -->
         </tr>
     </thead>
@@ -15,7 +14,6 @@
             <tr>
                 <td>{{ $jugador->nombre }}</td>
                 <td>{{ optional($jugador->equipo)->nombre }}</td>
-                <td>{{ $jugador->numeroGoles }}</td>
                 <!-- Agrega más columnas según tus necesidades -->
             </tr>
         @empty

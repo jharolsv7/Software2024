@@ -15,7 +15,6 @@ class JugadorFactory extends Factory
         return [
 			'nombre' => $this->faker->name,
 			'numero' => $this->faker->name,
-			'numeroGoles' => $this->faker->name,
 			'equipo_id' => $this->faker->name,
         ];
     }
