@@ -33,7 +33,7 @@
                         <input wire:model="puntos" type="number" class="form-control" id="puntos" placeholder="Puntos">@error('puntos') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="grupo">Seleccione un grupo:</label>
+                        <label for="grupo">Grupo</label>
                         <select wire:model="grupo" class="form-control" id="grupo">
                             <option value="">-- Seleccionar Grupo --</option>
                             <option value="A">Grupo A</option>

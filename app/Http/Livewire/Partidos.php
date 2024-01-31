@@ -100,7 +100,7 @@ class Partidos extends Component
         
         $this->resetInput();
 		$this->dispatchBrowserEvent('closeModal');
-		session()->flash('message', 'Partido Successfully created.');
+		session()->flash('message', 'Partido creado exitosamente.');
     }
 
     public function edit($id)
@@ -154,7 +154,7 @@ class Partidos extends Component
 
             $this->resetInput();
             $this->dispatchBrowserEvent('closeModal');
-			session()->flash('message', 'Partido Successfully updated.');
+			session()->flash('message', 'Partido actualizado exitosamente.');
         }
     }
 

@@ -68,7 +68,7 @@ class Sancionequipos extends Component
         
         $this->resetInput();
 		$this->dispatchBrowserEvent('closeModal');
-		session()->flash('message', 'Sancionequipo Successfully created.');
+		session()->flash('message', 'Sancion Equipo creada exitosamente.');
     }
 
     public function edit($id)
@@ -104,7 +104,7 @@ class Sancionequipos extends Component
 
             $this->resetInput();
             $this->dispatchBrowserEvent('closeModal');
-			session()->flash('message', 'Sancionequipo Successfully updated.');
+			session()->flash('message', 'Sancion Equipo actualizada exitosamente.');
         }
     }
 

@@ -6,6 +6,7 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads; // Agrega esta línea
 use App\Models\Equipo;
+use Illuminate\Support\Facades\Storage; // Agrega esta línea
 
 class Equipos extends Component
 {
@@ -74,11 +75,14 @@ class Equipos extends Component
 		'puntos' => 'required',
 		'goles_a_favor' => 'required',
 		'goles_en_contra' => 'required',
+		'logo' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
+
+		$imagePath = $this->logo->store('img', 'public');
 
         $equipo = Equipo::create([
 			'nombre' => $this->nombre,
-			'logo' => $this->logo,
+			'logo' => $imagePath,
 			'eslogan' => $this->eslogan,
 			'nombreMadrina' => $this->nombreMadrina,
 			'inscripcionMonto' => $this->inscripcionMonto,
@@ -135,10 +139,10 @@ class Equipos extends Component
         ]);
 
 		if ($this->selected_id) {
-			$equipo = Equipo::find($this->selected_id);
-			$equipo->update([
-				'nombre' => $this->nombre,
-				'logo' => $this->logo,
+            $record = Equipo::find($this->selected_id);
+    
+            $data = [
+                'nombre' => $this->nombre,
 				'eslogan' => $this->eslogan,
 				'nombreMadrina' => $this->nombreMadrina,
 				'inscripcionMonto' => $this->inscripcionMonto,
@@ -146,14 +150,27 @@ class Equipos extends Component
 				'grupo' => $this->grupo,
 				'goles_a_favor' => $this->goles_a_favor,
 				'goles_en_contra' => $this->goles_en_contra,
-			]);
+            ];
+    
+            if ($this->logo instanceof \Illuminate\Http\UploadedFile) {
+                // Elimina la imagen anterior si existe.
+                if ($record->logo) {
+                    Storage::disk('public')->delete($record->logo);
+                }
+    
+                // Almacena la nueva imagen.
+                $imagePath = $this->logo->store('img', 'public');
+                $data['logo'] = $imagePath;
+            }
+    
+            $record->update($data);
 
 			// Actualizar la relación solo si existe
-			if ($equipo->inscripcion) {
-				$equipo->inscripcion->update([
-					'monto' => $this->inscripcionMonto
-				]);
-			}
+			//7if ($equipo->inscripcion) {
+			//	$equipo->inscripcion->update([
+			//		'monto' => $this->inscripcionMonto
+			//	]);
+			//}
             $this->resetInput();
             $this->dispatchBrowserEvent('closeModal');
 			session()->flash('message', 'Equipo actualizado exitosamente.');

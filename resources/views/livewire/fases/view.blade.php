@@ -7,16 +7,16 @@
 					<div style="display: flex; justify-content: space-between; align-items: center;">
 						<div class="float-left">
 							<h4><i class="fab fa-laravel text-info"></i>
-							Fase Listing </h4>
+							Tabla Fases</h4>
 						</div>
 						@if (session()->has('message'))
 						<div wire:poll.4s class="btn btn-sm btn-success" style="margin-top:0px; margin-bottom:0px;"> {{ session('message') }} </div>
 						@endif
 						<div>
-							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Search Fases">
+							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Buscar Fases">
 						</div>
 						<div class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#createDataModal">
-						<i class="fa fa-plus"></i>  Add Fases
+						<i class="fa fa-plus"></i>  Agregar Fases
 						</div>
 					</div>
 				</div>
@@ -54,7 +54,7 @@
 							</tr>
 							@empty
 							<tr>
-								<td class="text-center" colspan="100%">No data Found </td>
+								<td class="text-center" colspan="100%">Sin Datos</td>
 							</tr>
 							@endforelse
 						</tbody>
