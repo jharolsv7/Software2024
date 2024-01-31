@@ -9,33 +9,37 @@ class AdminController extends Controller
 {
     public function index()
     {
-        // Obtener datos de la tabla 'ingresos'
-        $ingresos = DB::table('ingresos')
-                        ->select('detalles', DB::raw('SUM(monto) as total'))
-                        ->groupBy('detalles')
-                        ->get();
+        // Obtener datos de ingresos y egresos en una sola consulta
+        $data = DB::table('ingresos')
+                ->select('detalles', DB::raw('SUM(monto) as ingresos'), DB::raw('0 as egresos'))
+                ->groupBy('detalles')
+                ->unionAll(DB::table('egresos')
+                ->select('detalles', DB::raw('SUM(monto) as ingresos'), DB::raw('0 as egresos'))
+                ->groupBy('detalles'))
+                ->get();
 
-        // Obtener datos de la tabla 'egresos'
-        $egresos = DB::table('egresos')
-                        ->select('detalles', DB::raw('SUM(monto) as total'))
-                        ->groupBy('detalles')
-                        ->get();
 
-        // Preparar datos para el gráfico de ingresos
+        // Organizar datos fusionados en un array de objetos
+        $mergedData = [];
+        foreach ($data as $item) {
+        $mergedData[$item->detalles] = (object) [
+            'detalles' => $item->detalles,
+            'ingresos' => $item->ingresos,
+            'egresos' => $item->egresos
+            ];
+        }
+
+        // Preparar datos para el gráfico combinado de ingresos y egresos
         $labels = [];
         $ingresosData = [];
-
-        foreach ($ingresos as $ingreso) {
-            $labels[] = $ingreso->detalles;
-            $ingresosData[] = $ingreso->total;
-        }
-
-        // Preparar datos para el gráfico de egresos
         $egresosData = [];
 
-        foreach ($egresos as $egreso) {
-            $egresosData[] = $egreso->total;
+        foreach ($mergedData as $data) {
+        $labels[] = $data->detalles;
+        $ingresosData[] = $data->ingresos;
+        $egresosData[] = $data->egresos;
         }
+
 
         // Obtener datos de la tabla 'goleadores'
         $goleadores = DB::table('goleadores')
@@ -54,17 +58,54 @@ class AdminController extends Controller
         }
         // Obtener datos de la tabla 'partidos'
         $partidos = DB::table('partidos')
-                        ->select('ganador')
-                        ->orderBy('ganador', 'desc') // Ordenar por número de goles en orden descendente
-                        ->get();
+        ->select('ganador', 'golesEquipo1', 'golesEquipo2')
+        ->get();
 
-        // Preparar datos para el gráfico de goleadores
-        $partidosData = [];
+        // Inicializar contadores
+        $ganados = 0;
+        $empatados = 0;
+        $perdidos = 0;
 
         foreach ($partidos as $partido) {
-            $partidosData[] = $partido->ganador;
+        // Comparar los puntajes para determinar el resultado del partido
+        if ($partido->ganador == 'equipo_uno') {
+            $ganados++;
+        } elseif ($partido->ganador == 'equipo_dos') {
+            $perdidos++;
+        } else {
+            if ($partido->golesEquipo1 == $partido->golesEquipo2) {
+                $empatados++;
+            } else {
+                // Suponiendo que si no hay ganador, hay un empate
+                $empatados++;
+            }
+        }
         }
 
-        return view('admin.index', compact('labels', 'ingresosData', 'egresosData', 'goleadoresData','partidosData'));
+// Crear el array con los datos de los partidos
+$partidosData = [
+'Ganados' => $ganados,
+'Empatados' => $empatados,
+'Perdidos' => $perdidos
+];
+
+
+    
+        // Obtener datos de la tabla 'tarjetas'
+        $tarjetas = DB::table('partidos')
+        ->select(DB::raw('SUM(tarjetaAmarilla) as amarillas'), DB::raw('SUM(tarjetaRoja) as rojas'))
+        ->get();
+
+        // Preparar datos para el gráfico de tarjetas
+        $tarjetasData = [];
+        foreach ($tarjetas as $tarjeta) {
+        $tarjetasData = [
+            'amarillas' => $tarjeta->amarillas,
+            'rojas' => $tarjeta->rojas
+        ];
+        }
+
+
+        return view('admin.index', compact('labels', 'ingresosData', 'egresosData', 'goleadoresData','partidosData','tarjetasData'));
     }
 }
