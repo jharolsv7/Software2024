@@ -71,15 +71,15 @@
                         @error('equipo_id') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="descripcion"></label>
+                        <label for="descripcion">Descripción:</label>
                         <input wire:model="descripcion" type="text" class="form-control" id="descripcion" placeholder="Descripcion">@error('descripcion') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="monto"></label>
+                        <label for="monto">Monto:</label>
                         <input wire:model="monto" type="text" class="form-control" id="monto" placeholder="Monto">@error('monto') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="fecha"></label>
+                        <label for="fecha">Fecha:</label>
                         <input wire:model="fecha" type="text" class="form-control" id="fecha" placeholder="Fecha">@error('fecha') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">

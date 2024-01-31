@@ -47,7 +47,7 @@
 								<td>{{ $row->nombre }}</td>
 								<td>
 									@if($row->logo)
-										<img src="{{ asset('storage/' . $row->logo) }}" alt="Logo" class="w-16 h-16 object-cover rounded-full">
+										<img src="{{ asset('storage/' . $row->logo) }}" alt="Logo" class="w-16 h-16 object-cover rounded-full" style="max-width: 100px; max-height: 100px;">
 									@else
 										No Logo
 									@endif

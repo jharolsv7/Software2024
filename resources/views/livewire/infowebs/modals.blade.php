@@ -13,9 +13,9 @@
                         <input wire:model="fecha_campeonato" type="date" class="form-control" id="fecha_campeonato" placeholder="Fecha del Campeonato">@error('fecha_campeonato') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="foto_sitio"></label>
-                        <input wire:model="foto_sitio" type="file" class="form-control" id="foto_sitio" placeholder="Foto del Sitio">@error('foto_sitio') <span class="error text-danger">{{ $message }}</span> @enderror
-                    </div>
+                            <label for="foto_sitio">Foto del Sitio:</label>
+                            <input wire:model="foto_sitio" type="file" class="form-control" id="foto_sitio" accept="image/*">@error('foto_sitio') <span class="error text-danger">{{ $message }}</span> @enderror
+                        </div>
                     <div class="form-group">
                         <label for="informacion"></label>
                         <input wire:model="informacion" type="text" class="form-control" id="informacion" placeholder="Informacion">@error('informacion') <span class="error text-danger">{{ $message }}</span> @enderror
@@ -47,8 +47,8 @@
                         <input wire:model="fecha_campeonato" type="date" class="form-control" id="fecha_campeonato" placeholder="Fecha de Campeonato">@error('fecha_campeonato') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="foto_sitio"></label>
-                        <input wire:model="foto_sitio" type="file" class="form-control" id="foto_sitio" placeholder="Foto del Sitio">@error('foto_sitio') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <label for="foto_sitio">Foto del Sitio:</label>
+                        <input wire:model="foto_sitio" type="file" class="form-control" id="foto_sitio" accept="image/*">@error('foto_sitio') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
                         <label for="informacion"></label>

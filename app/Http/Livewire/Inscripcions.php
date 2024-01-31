@@ -18,7 +18,7 @@ class Inscripcions extends Component
     {
 		$keyWord = '%'.$this->keyWord .'%';
         return view('livewire.inscripcions.view', [
-            'inscripcions' => Inscripcion::latest()
+            'inscripcions' => Inscripcion::oldest()
 						->orWhere('descripcion', 'LIKE', $keyWord)
 						->orWhere('monto', 'LIKE', $keyWord)
 						->orWhere('fecha', 'LIKE', $keyWord)
@@ -127,7 +127,7 @@ class Inscripcions extends Component
             // Emitir evento para forzar una actualización en Livewire
             $this->emitSelf('refreshComponent');
             
-            session()->flash('message', 'Inscripcion Successfully updated.');
+            session()->flash('message', 'Inscripcion actualizada exitosamente.');
             $this->resetInput();
             $this->dispatchBrowserEvent('closeModal');
         }

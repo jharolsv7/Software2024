@@ -17,7 +17,7 @@ class Fases extends Component
     {
 		$keyWord = '%'.$this->keyWord .'%';
         return view('livewire.fases.view', [
-            'fases' => Fase::latest()
+            'fases' => Fase::oldest()
 						->orWhere('nombre_fase', 'LIKE', $keyWord)
 						->orWhere('descripcion', 'LIKE', $keyWord)
 						->paginate(10),

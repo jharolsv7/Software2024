@@ -18,7 +18,7 @@ class Sancionjugadors extends Component
     {
 		$keyWord = '%'.$this->keyWord .'%';
         return view('livewire.sancionjugadors.view', [
-            'sancionjugadors' => Sancionjugador::latest()
+            'sancionjugadors' => Sancionjugador::oldest()
 						->orWhere('jugador_id', 'LIKE', $keyWord)
 						->orWhere('detalles', 'LIKE', $keyWord)
 						->orWhere('fecha', 'LIKE', $keyWord)
@@ -63,7 +63,7 @@ class Sancionjugadors extends Component
         
         $this->resetInput();
 		$this->dispatchBrowserEvent('closeModal');
-		session()->flash('message', 'Sancionjugador Successfully created.');
+		session()->flash('message', 'Sancion Jugador creada exitosamente.');
     }
 
     public function edit($id)
@@ -99,7 +99,7 @@ class Sancionjugadors extends Component
 
             $this->resetInput();
             $this->dispatchBrowserEvent('closeModal');
-			session()->flash('message', 'Sancionjugador Successfully updated.');
+			session()->flash('message', 'Sancion Jugador actualizada exitosamente.');
         }
     }
 

@@ -100,4 +100,9 @@ class Jugadors extends Component
             Jugador::where('id', $id)->delete();
         }
     }
+
+    public function getJugadoresByEquipo($equipoId)
+    {
+        return Jugador::where('equipo_id', $equipoId)->get();
+    }
 }

@@ -30,7 +30,7 @@ class Goleadores extends Component
         }
         
         return view('livewire.goleadores.view', [
-            'goleadores' => Goleadore::latest()
+            'goleadores' => Goleadore::oldest()
 						->orWhere('partido_id', 'LIKE', $keyWord)
 						->orWhere('jugador_id', 'LIKE', $keyWord)
 						->orWhere('goles', 'LIKE', $keyWord)
@@ -68,7 +68,7 @@ class Goleadores extends Component
         
         $this->resetInput();
 		$this->dispatchBrowserEvent('closeModal');
-		session()->flash('message', 'Goleadore Successfully created.');
+		session()->flash('message', 'Goleador creado exitosamente.');
     }
 
     public function edit($id)
@@ -98,7 +98,7 @@ class Goleadores extends Component
 
             $this->resetInput();
             $this->dispatchBrowserEvent('closeModal');
-			session()->flash('message', 'Goleadore Successfully updated.');
+			session()->flash('message', 'Goleador actualizado exitosamente.');
         }
     }
 
