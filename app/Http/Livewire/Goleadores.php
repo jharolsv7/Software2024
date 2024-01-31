@@ -30,7 +30,7 @@ class Goleadores extends Component
         }
         
         return view('livewire.goleadores.view', [
-            'goleadores' => Goleadore::latest()
+            'goleadores' => Goleadore::oldest()
 						->orWhere('partido_id', 'LIKE', $keyWord)
 						->orWhere('jugador_id', 'LIKE', $keyWord)
 						->orWhere('goles', 'LIKE', $keyWord)

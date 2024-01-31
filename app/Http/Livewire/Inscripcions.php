@@ -18,7 +18,7 @@ class Inscripcions extends Component
     {
 		$keyWord = '%'.$this->keyWord .'%';
         return view('livewire.inscripcions.view', [
-            'inscripcions' => Inscripcion::latest()
+            'inscripcions' => Inscripcion::oldest()
 						->orWhere('descripcion', 'LIKE', $keyWord)
 						->orWhere('monto', 'LIKE', $keyWord)
 						->orWhere('fecha', 'LIKE', $keyWord)
