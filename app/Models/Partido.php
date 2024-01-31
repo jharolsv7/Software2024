@@ -39,4 +39,13 @@ class Partido extends Model
         return $this->belongsTo(Fase::class, 'fase_id');
     }
     
+    /**
+     * Relación con la tabla Goleador
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function goleadores()
+    {
+        return $this->hasMany(Goleadore::class, 'partido_id');
+    }
 }

@@ -2,6 +2,16 @@
 <div class="container-fluid">
 	<div class="row justify-content-center">
 		<div class="col-md-12">
+		<script>
+			Livewire.on('mostrarError', message => {
+				alert(message);
+			});
+		</script>
+		<script>
+			Livewire.on('abrirVentanaModalAdicional', function () {
+				$('#ventanaModalAdicional').modal('show');
+			});
+		</script>
 			<div class="card">
 				<div class="card-header">
 					<div style="display: flex; justify-content: space-between; align-items: center;">

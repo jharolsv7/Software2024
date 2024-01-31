@@ -20,7 +20,12 @@ class Jugador extends Model
      */
     public function equipo()
     {
-        return $this->hasOne('App\Models\Equipo', 'id', 'equipo_id');
+        return $this->belongsTo(Equipo::class);
+    }
+
+    public function sanciones()
+    {
+        return $this->hasMany(Sancionjugador::class);
     }
     
 }

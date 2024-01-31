@@ -20,4 +20,14 @@ class Equipo extends Model
         return $this->hasOne(Inscripcion::class);
     }
 
+    public function sanciones()
+    {
+        return $this->hasMany(Sancionequipo::class);
+    }
+
+    public function jugadores()
+    {
+        return $this->hasMany(Jugador::class);
+    }
+
 }
