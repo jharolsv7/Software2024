@@ -13,7 +13,7 @@ class Jugador extends Model
 
     protected $table = 'jugador';
 
-    protected $fillable = ['nombre','numero','numeroGoles','equipo_id'];
+    protected $fillable = ['nombre','numero','equipo_id'];
 	
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne

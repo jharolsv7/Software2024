@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->string('nombre');
             $table->integer('numero');
-            $table->integer('numeroGoles');
             $table->unsignedBigInteger('equipo_id');
             $table->timestamps();
 

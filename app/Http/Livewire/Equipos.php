@@ -4,15 +4,19 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use Livewire\WithPagination;
+use Livewire\WithFileUploads; // Agrega esta línea
 use App\Models\Equipo;
+use Illuminate\Support\Facades\Storage; // Agrega esta línea
 
 class Equipos extends Component
 {
     use WithPagination;
+	use WithFileUploads; // Agrega esta línea
 
 	protected $paginationTheme = 'bootstrap';
     public $selected_id, $keyWord, $nombre, $logo, $eslogan, $nombreMadrina, $inscripcionMonto, $puntos, $grupo, $goles_a_favor, $goles_en_contra;
-
+	protected $listeners = ['montoActualizado'];
+	public $fecha;
     public function render()
     {
 		$keyWord = '%'.$this->keyWord .'%';
@@ -31,6 +35,18 @@ class Equipos extends Component
         ]);
     }
 	
+	public function montoActualizado($monto)
+    {
+        $this->InscripcionMonto = $monto;
+        
+        // Actualizar monto en el modelo Equipo
+        $equipo = Equipo::find($this->selected_id);
+        $equipo->update(['inscripcionMonto' => $monto]);
+
+		// Emitir evento para forzar una actualización en Livewire
+        $this->emitSelf('refreshComponent');
+    }
+
     public function cancel()
     {
         $this->resetInput();
@@ -59,19 +75,36 @@ class Equipos extends Component
 		'puntos' => 'required',
 		'goles_a_favor' => 'required',
 		'goles_en_contra' => 'required',
+		'logo' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        Equipo::create([ 
-			'nombre' => $this-> nombre,
-			'logo' => $this-> logo,
-			'eslogan' => $this-> eslogan,
-			'nombreMadrina' => $this-> nombreMadrina,
-			'inscripcionMonto' => $this-> inscripcionMonto,
-			'puntos' => $this-> puntos,
-			'grupo' => $this-> grupo,
-			'goles_a_favor' => $this-> goles_a_favor,
-			'goles_en_contra' => $this-> goles_en_contra
-        ]);
+		$imagePath = $this->logo->store('img', 'public');
+
+        $equipo = Equipo::create([
+			'nombre' => $this->nombre,
+			'logo' => $imagePath,
+			'eslogan' => $this->eslogan,
+			'nombreMadrina' => $this->nombreMadrina,
+			'inscripcionMonto' => $this->inscripcionMonto,
+			'puntos' => $this->puntos,
+			'grupo' => $this->grupo,
+			'goles_a_favor' => $this->goles_a_favor,
+			'goles_en_contra' => $this->goles_en_contra,
+		]);
+
+		// Crear la relación solo si no existe
+		if (!$equipo->inscripcion) {
+			// Validar y establecer la fecha
+			$fecha = $this->fecha ?: now();
+
+			$equipo->inscripcion()->create([
+				'monto' => 0,
+				'fecha' => $fecha,
+				'descripcion' => "Generado Automaticamente",
+				'estado' => 0,
+				// Otros campos de la inscripción...
+			]);
+		}
         
         $this->resetInput();
 		$this->dispatchBrowserEvent('closeModal');
@@ -105,20 +138,39 @@ class Equipos extends Component
 		'goles_en_contra' => 'required',
         ]);
 
-        if ($this->selected_id) {
-			$record = Equipo::find($this->selected_id);
-            $record->update([ 
-			'nombre' => $this-> nombre,
-			'logo' => $this-> logo,
-			'eslogan' => $this-> eslogan,
-			'nombreMadrina' => $this-> nombreMadrina,
-			'inscripcionMonto' => $this-> inscripcionMonto,
-			'puntos' => $this-> puntos,
-			'grupo' => $this-> grupo,
-			'goles_a_favor' => $this-> goles_a_favor,
-			'goles_en_contra' => $this-> goles_en_contra
-            ]);
+		if ($this->selected_id) {
+            $record = Equipo::find($this->selected_id);
+    
+            $data = [
+                'nombre' => $this->nombre,
+				'eslogan' => $this->eslogan,
+				'nombreMadrina' => $this->nombreMadrina,
+				'inscripcionMonto' => $this->inscripcionMonto,
+				'puntos' => $this->puntos,
+				'grupo' => $this->grupo,
+				'goles_a_favor' => $this->goles_a_favor,
+				'goles_en_contra' => $this->goles_en_contra,
+            ];
+    
+            if ($this->logo instanceof \Illuminate\Http\UploadedFile) {
+                // Elimina la imagen anterior si existe.
+                if ($record->logo) {
+                    Storage::disk('public')->delete($record->logo);
+                }
+    
+                // Almacena la nueva imagen.
+                $imagePath = $this->logo->store('img', 'public');
+                $data['logo'] = $imagePath;
+            }
+    
+            $record->update($data);
 
+			// Actualizar la relación solo si existe
+			//7if ($equipo->inscripcion) {
+			//	$equipo->inscripcion->update([
+			//		'monto' => $this->inscripcionMonto
+			//	]);
+			//}
             $this->resetInput();
             $this->dispatchBrowserEvent('closeModal');
 			session()->flash('message', 'Equipo actualizado exitosamente.');

@@ -17,6 +17,16 @@
                         <input wire:model="hora" type="time" class="form-control" id="hora" placeholder="Hora">@error('hora') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
+                        <label for="fase_id">Fase del Encuentro:</label>
+                        <select wire:model="fase_id" class="form-control">
+                            <option value="">Seleccione la fase</option>
+                            @foreach($fases as $fase)
+                                <option value="{{ $fase->id }}">{{ $fase->nombre_fase }}</option>
+                            @endforeach
+                        </select>
+                        @error('fase_id') <span class="error text-danger">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="form-group">
                         <label for="ubicacion"></label>
                         <input wire:model="ubicacion" type="text" class="form-control" id="ubicacion" placeholder="Ubicacion">@error('ubicacion') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
@@ -56,6 +66,10 @@
                         </select>
                         @error('equipo_id') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
+                    <div class="form-group">
+                        <label for="ganador"></label>
+                        <input wire:model="ganador" type="text" class="form-control" id="ganador" placeholder="Ganador">@error('ganador') <span class="error text-danger">{{ $message }}</span> @enderror
+                    </div>
 
                 </form>
             </div>
@@ -85,6 +99,16 @@
                     <div class="form-group">
                         <label for="hora">Hora Partido</label>
                         <input wire:model="hora" type="time" class="form-control" id="hora" placeholder="Hora">@error('hora') <span class="error text-danger">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="fase_id">Fase del Encuentro:</label>
+                        <select wire:model="fase_id" class="form-control">
+                            <option value="">Seleccione la fase</option>
+                            @foreach($fases as $fase)
+                                <option value="{{ $fase->id }}">{{ $fase->nombre_fase }}</option>
+                            @endforeach
+                        </select>
+                        @error('fase_id') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
                         <label for="ubicacion">Ubicación</label>
@@ -125,6 +149,10 @@
                             @endforeach
                         </select>
                         @error('equipo_id') <span class="error text-danger">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="ganador"></label>
+                        <input wire:model="ganador" type="text" class="form-control" id="ganador" placeholder="Ganador">@error('ganador') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
 
                 </form>

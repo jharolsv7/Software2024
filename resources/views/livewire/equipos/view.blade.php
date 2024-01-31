@@ -45,7 +45,13 @@
 							<tr>
 								<td>{{ $loop->iteration }}</td> 
 								<td>{{ $row->nombre }}</td>
-								<td>{{ $row->logo }}</td>
+								<td>
+									@if($row->logo)
+										<img src="{{ asset('storage/' . $row->logo) }}" alt="Logo" class="w-16 h-16 object-cover rounded-full" style="max-width: 100px; max-height: 100px;">
+									@else
+										No Logo
+									@endif
+								</td>
 								<td>{{ $row->eslogan }}</td>
 								<td>{{ $row->nombreMadrina }}</td>
 								<td>{{ $row->inscripcionMonto }}</td>

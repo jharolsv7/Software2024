@@ -15,4 +15,9 @@ class Equipo extends Model
 
     protected $fillable = ['nombre','logo','eslogan','nombreMadrina','inscripcionMonto','puntos','grupo','goles_a_favor','goles_en_contra'];
 	
+    public function inscripcion()
+    {
+        return $this->hasOne(Inscripcion::class);
+    }
+
 }
