@@ -52,26 +52,39 @@
                                 <label for="tarjetaRoja">Total tarjetas Rojas:</label>
                                 <input wire:model="tarjetaRoja" type="number" class="form-control" id="tarjetaRoja" placeholder="Tarjetas Rojas">@error('tarjetaRoja') <span class="error text-danger">{{ $message }}</span> @enderror
                             </div>
+
+                            <div class="form-group">
+                                <label for="equipo_uno_grupo">Grupo del Equipo:</label>
+                                <select wire:model="equipo_uno_grupo" wire:change="cargarEquiposGrupoUno" class="form-control">
+                                    <option value="">Seleccione un grupo</option>
+                                    @foreach($grupos as $grupo)
+                                        <option value="{{ $grupo }}">{{ $grupo }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
                             <div class="form-group">
                                 <label for="equipo_uno">Equipo 1:</label>
                                 <select wire:model="equipo_uno" class="form-control">
                                     <option value="">Seleccione un equipo</option>
-                                    @foreach($equipos as $equipo)
-                                    <option value="{{ $equipo->id }}">{{ $equipo->nombre }}</option>
+                                    @foreach($equiposGrupoUno as $equipo)
+                                        <option value="{{ $equipo->id }}">{{ $equipo->nombre }}</option>
                                     @endforeach
                                 </select>
-                                @error('equipo_id') <span class="error text-danger">{{ $message }}</span> @enderror
+                                @error('equipo_uno') <span class="error text-danger">{{ $message }}</span> @enderror
                             </div>
+
                             <div class="form-group">
                                 <label for="equipo_dos">Equipo 2:</label>
                                 <select wire:model="equipo_dos" class="form-control">
                                     <option value="">Seleccione un equipo</option>
-                                    @foreach($equipos as $equipo)
-                                    <option value="{{ $equipo->id }}">{{ $equipo->nombre }}</option>
+                                    @foreach($equiposGrupoUno as $equipo)
+                                        <option value="{{ $equipo->id }}">{{ $equipo->nombre }}</option>
                                     @endforeach
                                 </select>
-                                @error('equipo_id') <span class="error text-danger">{{ $message }}</span> @enderror
+                                @error('equipo_dos') <span class="error text-danger">{{ $message }}</span> @enderror
                             </div>
+
                             <div class="form-group">
                                 <label for="ganador">Ganador del Partido:</label>
                                 <input wire:model="ganador" type="text" class="form-control" id="ganador" placeholder="Ganador">@error('ganador') <span class="error text-danger">{{ $message }}</span> @enderror
@@ -142,26 +155,42 @@
                                 <label for="tarjetaRoja">Total tarjetas Rojas:</label>
                                 <input wire:model="tarjetaRoja" type="number" class="form-control" id="tarjetaRoja" placeholder="Tarjetas Rojas">@error('tarjetaRoja') <span class="error text-danger">{{ $message }}</span> @enderror
                             </div>
+                            
+                            <div class="form-group">
+                                <label for="equipo_uno_grupo">Grupo del Equipo:</label>
+                                <select wire:model="equipo_uno_grupo" wire:change="cargarEquiposGrupoUno" class="form-control">
+                                    <option value="">Seleccione un grupo</option>
+                                    @foreach($grupos as $grupo)
+                                        <option value="{{ $grupo }}">{{ $grupo }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                        @if($modoEdicion)
+                            <!-- Sección para editar equipos -->
                             <div class="form-group">
                                 <label for="equipo_uno">Equipo 1:</label>
                                 <select wire:model="equipo_uno" class="form-control">
                                     <option value="">Seleccione un equipo</option>
-                                    @foreach($equipos as $equipo)
-                                    <option value="{{ $equipo->id }}">{{ $equipo->nombre }}</option>
+                                    @foreach($equiposGrupoUno as $equipo)
+                                        <option value="{{ $equipo->id }}">{{ $equipo->nombre }}</option>
                                     @endforeach
                                 </select>
-                                @error('equipo_id') <span class="error text-danger">{{ $message }}</span> @enderror
+                                @error('equipo_uno') <span class="error text-danger">{{ $message }}</span> @enderror
                             </div>
+
                             <div class="form-group">
                                 <label for="equipo_dos">Equipo 2:</label>
                                 <select wire:model="equipo_dos" class="form-control">
                                     <option value="">Seleccione un equipo</option>
-                                    @foreach($equipos as $equipo)
-                                    <option value="{{ $equipo->id }}">{{ $equipo->nombre }}</option>
+                                    @foreach($equiposGrupoUno as $equipo)
+                                        <option value="{{ $equipo->id }}">{{ $equipo->nombre }}</option>
                                     @endforeach
                                 </select>
-                                @error('equipo_id') <span class="error text-danger">{{ $message }}</span> @enderror
+                                @error('equipo_dos') <span class="error text-danger">{{ $message }}</span> @enderror
                             </div>
+                        @endif
+
                             <div class="form-group">
                                 <label for="ganador">Ganador del Partido:</label>
                                 <input wire:model="ganador" type="text" class="form-control" id="ganador" placeholder="Ganador">@error('ganador') <span class="error text-danger">{{ $message }}</span> @enderror

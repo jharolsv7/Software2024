@@ -16,6 +16,31 @@ class Partidos extends Component
 	public $equipoSeleccionado;
 	public $jugadoresEquipoSeleccionado;
 
+	public $grupos = [];
+    public $equipo_uno_grupo = null;
+    public $equipo_dos_grupo = null;
+    public $equiposGrupoUno = [];
+    public $equiposGrupoDos = [];
+	public $modoEdicion = true; // Puedes cambiar el valor inicial según tus necesidades
+	// Agrega la propiedad $partidoId
+    public $partidoId;
+
+	public function cargarGrupos()
+    {
+        $this->grupos = Equipo::distinct('grupo')->pluck('grupo');
+    }
+
+    public function cargarEquiposGrupoUno()
+    {
+        $this->equiposGrupoUno = Equipo::where('grupo', $this->equipo_uno_grupo)->get();
+    }
+
+    public function cargarEquiposGrupoDos()
+    {
+        $this->equiposGrupoDos = Equipo::where('grupo', $this->equipo_dos_grupo)->get();
+    }
+
+	
 	protected $paginationTheme = 'bootstrap';
     public $selected_id, $keyWord, $fecha, $hora, $fase_id, $ubicacion, $golesEquipo1=0, $golesEquipo2=0, $tarjetaAmarilla, $tarjetaRoja, $equipo_uno, $equipo_dos, $ganador;
 
@@ -116,7 +141,7 @@ class Partidos extends Component
 		'tarjetaRoja' => 'required',
 		'equipo_uno' => 'required',
 		'equipo_dos' => 'required',
-		'ganador' => 'required',
+		'ganador' => '',
         ]);
 
 		// Verificar sanciones antes de crear el partido
@@ -193,6 +218,7 @@ class Partidos extends Component
 
     public function edit($id)
     {
+		$this->modoEdicion = true; // Establece el modo de edición a true
         $record = Partido::findOrFail($id);
         $this->selected_id = $id; 
 		$this->fecha = $record-> fecha;
@@ -206,6 +232,25 @@ class Partidos extends Component
 		$this->equipo_uno = $record-> equipo_uno;
 		$this->equipo_dos = $record-> equipo_dos;
 		$this->ganador = $record-> ganador;
+		// Establecer $equipo_uno_grupo y $equipo_dos_grupo basados en los datos del partido
+		$equipoUno = Equipo::find($this->equipo_uno);
+		$equipoDos = Equipo::find($this->equipo_dos);
+	
+		if ($equipoUno) {
+			$this->equipo_uno_grupo = $equipoUno->grupo;
+		}
+	
+		if ($equipoDos) {
+			$this->equipo_dos_grupo = $equipoDos->grupo;
+		}
+
+		// Establecer la propiedad $partidoId
+		$this->partidoId = $id;
+	
+		// Verificar y cargar equipos solo si $equipo_uno_grupo está definido
+		if ($this->equipo_uno_grupo) {
+			$this->cargarEquiposGrupoUno();
+		}
     }
 
     public function update()
@@ -401,6 +446,11 @@ class Partidos extends Component
         // Inicializa los valores según tus necesidades
         $this->golesEquipo1 = $this->obtenerGolesEquipo1();
         $this->golesEquipo2 = $this->obtenerGolesEquipo2();
+
+		// Agrega las siguientes líneas para cargar los grupos y equipos
+        $this->cargarGrupos();
+        $this->cargarEquiposGrupoUno();
+        $this->cargarEquiposGrupoDos();
     }
 
 	public function getEquipoNombre($equipoId)
