@@ -15,7 +15,7 @@ class Equipos extends Component
 
 	protected $paginationTheme = 'bootstrap';
     public $selected_id, $keyWord, $nombre, $logo, $eslogan, $nombreMadrina, $inscripcionMonto, $puntos, $grupo, $goles_a_favor, $goles_en_contra;
-	protected $listeners = ['montoActualizado'];
+	protected $listeners = ['montoActualizado', 'equiposActualizados']; // Agrega esta línea
 	public $fecha;
     public function render()
     {
@@ -35,6 +35,40 @@ class Equipos extends Component
         ]);
     }
 	
+	public function sortearEquipos()
+{
+    // Obtén todos los equipos
+    $equipos = Equipo::all();
+
+    // Mezcla aleatoriamente los equipos
+    $equiposMezclados = $equipos->shuffle();
+
+    // Divide los equipos en dos grupos
+    $grupoA = $equiposMezclados->splice(0, $equiposMezclados->count() / 2);
+    $grupoB = $equiposMezclados;
+
+    // Asigna el grupo A a los primeros equipos y el grupo B a los restantes
+    foreach ($grupoA as $equipo) {
+        $equipo->update(['grupo' => 'A']);
+    }
+
+    foreach ($grupoB as $equipo) {
+        $equipo->update(['grupo' => 'B']);
+    }
+
+    // Emitir evento para forzar una actualización en Livewire
+    $this->emit('equiposActualizados');
+
+    // Puedes mostrar un mensaje de éxito o realizar otras acciones según tus necesidades
+    session()->flash('message', 'Sorteo de equipos realizado con éxito');
+}
+
+public function equiposActualizados()
+{
+    // Código que deseas ejecutar cuando se emite el evento 'equiposActualizados'
+    // Puede estar vacío si no necesitas realizar ninguna acción específica
+}
+
 	public function montoActualizado($monto)
     {
         $this->InscripcionMonto = $monto;

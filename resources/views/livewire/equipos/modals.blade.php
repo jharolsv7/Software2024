@@ -126,3 +126,4 @@
        </div>
     </div>
 </div>
+<button wire:click.prevent="sortearEquipos" class="btn btn-success">Sortear Equipos</button>
