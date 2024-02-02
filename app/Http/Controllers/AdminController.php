@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Ingreso;
+use App\Models\Egreso;
+use App\Models\Partido;
+use App\Models\Goleadore;
+use App\Models\Equipo;
 use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
@@ -41,71 +46,70 @@ class AdminController extends Controller
         }
 
 
-        // Obtener datos de la tabla 'goleadores'
+        // Obtener datos de la tabla 'goleadores' con los nombres de los jugadores
         $goleadores = DB::table('goleadores')
-                        ->select('jugador_id', 'goles') // Seleccionar tanto el jugador como el número de goles
-                        ->orderBy('goles', 'desc') // Ordenar por número de goles en orden descendente
-                        ->get();
+            ->join('jugador', 'goleadores.jugador_id', '=', 'jugador.id')
+            ->select('jugador.nombre as nombre', 'goleadores.goles')
+            ->orderBy('goleadores.goles', 'desc')
+            ->get();
 
         // Preparar datos para el gráfico de goleadores
         $goleadoresData = [];
 
         foreach ($goleadores as $goleador) {
             $goleadoresData[] = [
-                'jugador_id' => $goleador->jugador_id,
+                'nombre' => $goleador->nombre,
                 'goles' => $goleador->goles
             ];
         }
+
         // Obtener datos de la tabla 'partidos'
         $partidos = DB::table('partidos')
-        ->select('ganador', 'golesEquipo1', 'golesEquipo2')
-        ->get();
+            ->select('ganador')
+            ->get();
 
         // Inicializar contadores
         $ganados = 0;
         $empatados = 0;
-        $perdidos = 0;
 
         foreach ($partidos as $partido) {
-        // Comparar los puntajes para determinar el resultado del partido
-        if ($partido->ganador == 'equipo_uno') {
-            $ganados++;
-        } elseif ($partido->ganador == 'equipo_dos') {
-            $perdidos++;
-        } else {
-            if ($partido->golesEquipo1 == $partido->golesEquipo2) {
+            // Comparar el ganador para determinar el resultado del partido
+            if ($partido->ganador == 'Empate') {
                 $empatados++;
             } else {
-                // Suponiendo que si no hay ganador, hay un empate
-                $empatados++;
+                $ganados++;
             }
         }
-        }
 
-// Crear el array con los datos de los partidos
-$partidosData = [
-'Ganados' => $ganados,
-'Empatados' => $empatados,
-'Perdidos' => $perdidos
-];
+        // Crear el array con los datos de los partidos
+        $partidosData = [
+            'Ganados' => $ganados,
+            'Empatados' => $empatados
+        ];
 
-
-    
-        // Obtener datos de la tabla 'tarjetas'
-        $tarjetas = DB::table('partidos')
-        ->select(DB::raw('SUM(tarjetaAmarilla) as amarillas'), DB::raw('SUM(tarjetaRoja) as rojas'))
-        ->get();
+        // Obtener datos de la tabla 'tarjetas' utilizando Eloquent
+        $tarjetas = Partido::select(DB::raw('SUM(tarjetaAmarilla) as amarillas'), DB::raw('SUM(tarjetaRoja) as rojas'))->first();
 
         // Preparar datos para el gráfico de tarjetas
-        $tarjetasData = [];
-        foreach ($tarjetas as $tarjeta) {
         $tarjetasData = [
-            'amarillas' => $tarjeta->amarillas,
-            'rojas' => $tarjeta->rojas
+            'amarillas' => $tarjetas->amarillas,
+            'rojas' => $tarjetas->rojas
         ];
-        }
 
+        // Obtener la cantidad total de partidos en la tabla 'partidos'
+        $jugados = DB::table('partidos')->count();
 
-        return view('admin.index', compact('labels', 'ingresosData', 'egresosData', 'goleadoresData','partidosData','tarjetasData'));
+          $PartidosTotales = 43; 
+
+        // Calcular el porcentaje de progreso
+        $porcentajeProgreso = ($jugados/$PartidosTotales ) * 100;
+
+        // Crear el array con los datos de progreso
+        $progresoData = [
+            'Completados' => $porcentajeProgreso,
+            'Faltantes' => 100 - $porcentajeProgreso
+        ];
+    
+        return view('admin.index', compact('labels', 'ingresosData', 'egresosData', 'goleadoresData', 'partidosData', 'tarjetasData', 'progresoData'));
     }
 }

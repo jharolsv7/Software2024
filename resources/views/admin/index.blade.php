@@ -3,32 +3,42 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1 class="text-center">TORNEO DE FÚTBOL SOFTWARE 2024</h1>
+    <h1 class="text-center"><b>TORNEO DE FÚTBOL SOFTWARE 2024</b></h1>
 @stop
 
 @section('content')
-    <h5 class="text-center">Administrador <b>{{Auth::user()->name}}</b> aquí puedes actualizar tus tablas del torneo</h5>
+    <h5 class="text-center">Administrador <b>{{Auth::user()->name}}</b> aquí puedes ver las Estadísticas del Torneo.</h5>
+ 
+    <style>
+    .chart-container {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin: 24px;
+    }
     
+    </style>
+
     <div class="row">
-        <div class="col-md-4">
-            <div>
-                <canvas id="myChartIngresosEgresos" width="400" height="400"></canvas>
-            </div>
+        <!-- Primer par de gráficos -->
+        <div class="col-md-7 chart-container marge">
+            <canvas id="myChartIngresosEgresos"></canvas>
         </div>
-        <div class="col-md-4">
-            <div>
-                <canvas id="myChartGoleadores" width="400" height="400"></canvas>
-            </div>
+        <div class="col-md-4 chart-container marge">
+            <canvas id="myChartGoleadores"></canvas>
         </div>
-        <div class="col-md-4">
-            <div>
-                <canvas id="myChartPartidos" width="400" height="400"></canvas>
-            </div>
+    </div>
+
+    <div class="row">
+        <!-- Segundo par de gráficos -->
+        <div class="col-md-3 chart-container marge">
+            <canvas id="myChartProgreso"></canvas>
         </div>
-        <div class="col-md-4">
-            <div>
-                <canvas id="myChartTarjetas" width="400" height="400"></canvas>
-            </div>
+        <div class="col-md-4 chart-container marge">
+            <canvas id="myChartPartidos"></canvas>
+        </div>
+        <div class="col-md-3 chart-container marge">
+            <canvas id="myChartTarjetas"></canvas>
         </div>
     </div>
 
@@ -67,7 +77,7 @@
         new Chart(ctxGoleadores, {
             type: 'doughnut',
             data: {
-                labels: {!! json_encode(array_column($goleadoresData, 'jugador_id')) !!},
+                labels: {!! json_encode(array_column($goleadoresData, 'nombre')) !!},
                 datasets: [{
                     label: 'Goleadores',
                     data: {!! json_encode(array_column($goleadoresData, 'goles')) !!},
@@ -100,12 +110,43 @@
         });
 
 
+
+    const ctxProgreso = document.getElementById('myChartProgreso');
+
+    new Chart(ctxProgreso, {
+        type: 'doughnut',
+        data: {
+            labels: ['Progreso', 'Fin Torneo'],
+            datasets: [{
+                label: 'Progreso',
+                data: {!! json_encode(array_values($progresoData)) !!},
+                backgroundColor: [
+                    'rgba(0.1, 0.1, 0.1)',
+                    'rgba(128, 128, 128, 0.1)'
+                ],
+                borderColor: [
+                    'rgba(0, 0, 0, 1)',
+                    'rgba(128, 128, 128, 1)'
+                ],
+                borderWidth: 2
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+
         const ctxPartidos = document.getElementById('myChartPartidos');
 
         new Chart(ctxPartidos, {
             type: 'bar',
             data: {
-                labels: ['Ganados', 'Empatados', 'Perdidos'],
+                labels: ['Partidos con Victoria', 'Partidos Empatados'],
                 datasets: [{
                     label: 'Partidos',
                     data: {!! json_encode(array_values($partidosData)) !!},
@@ -160,6 +201,7 @@
                 }
             }
         });
+        
     </script>
 @stop
 
