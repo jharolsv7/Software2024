@@ -203,7 +203,7 @@
                 <button type="button" wire:click.prevent="cancel()" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                 <button type="button" wire:click.prevent="update()" class="btn btn-primary">Guardar</button>
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Asignar Goles</button>
+                <!-- <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Asignar Goles</button> -->
             </div>
        </div>
     </div>
