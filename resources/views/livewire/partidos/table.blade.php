@@ -29,7 +29,7 @@
                     </tr>
                 @empty
                     <tr class="hover:bg-gray-800">
-                        <td colspan="5" class="border px-2 py-1 md:px-4 md:py-2 lg:px-6 lg:py-3 bg-gray-300 text-black text-xs md:text-sm lg:text-base">Sin partidos encontrados</td>
+                        <td colspan="5" class="border px-2 py-1 md:px-4 md:py-2 lg:px-6 lg:py-3 bg-gray-300 text-black text-xs md:text-sm lg:text-base">Proximamente</td>
                     </tr>
                 @endforelse
             </tbody>

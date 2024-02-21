@@ -112,19 +112,25 @@ public function equiposActualizados()
 		'logo' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-		$imagePath = $this->logo->store('img', 'public');
+		// Verificar si se cargó una imagen
+		if ($this->logo) {
+			$imagePath = $this->logo->store('img', 'public');
+		} else {
+			$imagePath = null;
+		}
 
         $equipo = Equipo::create([
 			'nombre' => $this->nombre,
 			'logo' => $imagePath,
 			'eslogan' => $this->eslogan,
-			'nombreMadrina' => $this->nombreMadrina,
+			'nombreMadrina' => $this->nombreMadrina, // Asignar directamente
 			'inscripcionMonto' => $this->inscripcionMonto,
 			'puntos' => $this->puntos,
 			'grupo' => $this->grupo,
 			'goles_a_favor' => $this->goles_a_favor,
 			'goles_en_contra' => $this->goles_en_contra,
 		]);
+
 
 		// Crear la relación solo si no existe
 		if (!$equipo->inscripcion) {
@@ -185,22 +191,23 @@ public function equiposActualizados()
 				'goles_a_favor' => $this->goles_a_favor,
 				'goles_en_contra' => $this->goles_en_contra,
             ];
-    
-            if ($this->logo instanceof \Illuminate\Http\UploadedFile) {
-                // Elimina la imagen anterior si existe.
-                if ($record->logo) {
-                    Storage::disk('public')->delete($record->logo);
-                }
-    
-                // Almacena la nueva imagen.
-                $imagePath = $this->logo->store('img', 'public');
-                $data['logo'] = $imagePath;
-            }
-    
-            $record->update($data);
+
+            // Verificar si se proporciona una nueva imagen
+			if ($this->logo instanceof \Illuminate\Http\UploadedFile) {
+				// Elimina la imagen anterior si existe.
+				if ($record->logo) {
+					Storage::disk('public')->delete($record->logo);
+				}
+
+				// Almacena la nueva imagen.
+				$imagePath = $this->logo->store('img', 'public');
+				$data['logo'] = $imagePath;
+			}
+
+			$record->update($data);
 
 			// Actualizar la relación solo si existe
-			//7if ($equipo->inscripcion) {
+			//if ($equipo->inscripcion) {
 			//	$equipo->inscripcion->update([
 			//		'monto' => $this->inscripcionMonto
 			//	]);
