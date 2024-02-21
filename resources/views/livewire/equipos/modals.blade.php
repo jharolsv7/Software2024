@@ -32,7 +32,6 @@
                         <label for="puntos"></label>
                         <input wire:model="puntos" type="number" class="form-control" id="puntos" placeholder="Puntos">@error('puntos') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
-                    <!--
                     <div class="form-group">
                         <label for="grupo">Grupo</label>
                         <select wire:model="grupo" class="form-control" id="grupo">
@@ -43,8 +42,7 @@
                         @error('grupo') 
                             <span class="error text-danger">{{ $message }}</span> 
                         @enderror
-                    </div> 
-                    -->
+                    </div>
                     <div class="form-group">
                         <label for="goles_a_favor"></label>
                         <input wire:model="goles_a_favor" type="number" class="form-control" id="goles_a_favor" placeholder="Goles A Favor" min="0">@error('goles_a_favor') <span class="error text-danger">{{ $message }}</span> @enderror
@@ -99,7 +97,6 @@
                         <label for="puntos">Puntos</label>
                         <input wire:model="puntos" type="number" class="form-control" id="puntos" placeholder="Puntos" min="0" step="1">@error('puntos') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
-                    
                     <div class="form-group">
                         <label for="grupo">Seleccione un grupo:</label>
                         <select wire:model="grupo" class="form-control" id="grupo">
@@ -111,7 +108,6 @@
                             <span class="error text-danger">{{ $message }}</span> 
                         @enderror
                     </div>
-                    
                     <div class="form-group">
                         <label for="goles_a_favor">Goles a Favor</label>
                         <input wire:model="goles_a_favor" type="number" class="form-control" id="goles_a_favor" placeholder="Goles A Favor" min="0" step="1">@error('goles_a_favor') <span class="error text-danger">{{ $message }}</span> @enderror

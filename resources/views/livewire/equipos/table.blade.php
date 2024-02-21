@@ -24,7 +24,7 @@
             @empty
             <tr class="hover:bg-gray-800 transition-bg duration-300">
 
-                    <td colspan="4" class="border px-2 py-1 md:px-4 md:py-2 bg-gray-300 text-black">Proximamente</td>
+                    <td colspan="4" class="border px-2 py-1 md:px-4 md:py-2 bg-gray-300 text-black">Sin Datos</td>
                 </tr>
             @endforelse
         </tbody>
