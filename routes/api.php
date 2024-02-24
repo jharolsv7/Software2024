@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\ApiController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -17,3 +18,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/equipos',[ApiController:: class,'equipos']); 
+Route::get('/tabla-posiciones', [ApiController::class, 'tablaPosiciones']);
+Route::get('/goleadores', [ApiController::class, 'goleadores']);
+Route::get('/Sancionequipos', [ApiController::class, 'Sancionequipos']);
+Route::get('/Sancionjugadores', [ApiController::class, 'Sancionjugadores']);
