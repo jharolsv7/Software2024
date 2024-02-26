@@ -63,3 +63,4 @@ Route::get('generar-pdf-balance', [InformeControllerBalance::class, 'generarPDF'
 	Route::view('sancionequiporeporte', 'livewire.sancionequipos.lista')->middleware('auth');
 	Route::view('goleadoresreporte', 'livewire.goleadores.lista')->middleware('auth');
 	Route::view('balancereporte', 'livewire.ingresos.lista')->middleware('auth');
+	Route::view('vocalia', 'livewire.sancions.index')->middleware('auth');
