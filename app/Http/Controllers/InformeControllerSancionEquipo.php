@@ -22,31 +22,27 @@ class InformeControllerSancionEquipo extends Controller
         // Generar el HTML del informe
         $html = '<html><body>';
         
-        // Agregar las imágenes
-        $html .= '<img src="' . asset('img/Espe.png') . '" alt="Logo" class="logo">';
-        $html .= '<img src="' . asset('img/software.jpg') . '" alt="Logo" class="logo">';
-
         // Agregar el contexto sobre las sanciones
-        $html .= '<h1>Informe de Sanciones de Equipos</h1>';
-        $html .= '<p>Este informe contiene detalles sobre las sanciones aplicadas a los equipos.</p>';
+        $html .= '<h1 style="text-align: center;">Informe de Sanciones de Equipos</h1>';
+        $html .= '<p style="text-align: center;">Fecha: ' . date('Y-m-d H:i:s') . '</p>';
+        $html .= '<p style="text-align: center;">Este informe contiene detalles sobre las sanciones aplicadas a los equipos.</p>';
 
-        // Agregar la tabla de sanciones de equipos
-        $html .= '<table border="1" cellpadding="5">';
-        $html .= '<thead><tr><th>ID</th><th>Equipo</th><th>Detalles</th><th>Fecha</th><th>Monto</th><th>Estado</th></tr></thead>';
+                // Agregar la tabla de sanciones de equipos
+        $html .= '<table style="width: 100%; border-collapse: collapse;" border="1">';
+        $html .= '<thead><tr style="background-color: #ccc;"><th style="padding: 10px;">ID</th><th style="padding: 10px;">Equipo</th><th style="padding: 10px;">Detalles</th><th style="padding: 10px;">Fecha</th><th style="padding: 10px;">Monto</th><th style="padding: 10px;">Estado</th></tr></thead>';
         $html .= '<tbody>';
         foreach ($sanciones as $sancion) {
-            $html .= '<tr>';
-            $html .= '<td>' . $sancion->id . '</td>';
-            $html .= '<td>' . $sancion->equipo->nombre . '</td>';
-            $html .= '<td>' . $sancion->detalles . '</td>';
-            $html .= '<td>' . $sancion->fecha . '</td>';
-            $html .= '<td>' . $sancion->monto . '</td>';
-            $html .= '<td>' . ($sancion->estado ? 'Activa' : 'Inactiva') . '</td>';
+            $html .= '<tr style="border: 1px solid #000;">';
+            $html .= '<td style="padding: 10px; border: 1px solid #000;">' . $sancion->id . '</td>';
+            $html .= '<td style="padding: 10px; border: 1px solid #000;">' . $sancion->equipo->nombre . '</td>';
+            $html .= '<td style="padding: 10px; border: 1px solid #000;">' . $sancion->detalles . '</td>';
+            $html .= '<td style="padding: 10px; border: 1px solid #000;">' . $sancion->fecha . '</td>';
+            $html .= '<td style="padding: 10px; border: 1px solid #000;">' . $sancion->monto . '</td>';
+            $html .= '<td style="padding: 10px; border: 1px solid #000;">' . ($sancion->estado ? 'Activa' : 'Inactiva') . '</td>';
             $html .= '</tr>';
         }
         $html .= '</tbody></table>';
-
-        $html .= '</body></html>';
+                $html .= '</body></html>';
 
         // Cargar el HTML en Dompdf
         $dompdf->loadHtml($html);
