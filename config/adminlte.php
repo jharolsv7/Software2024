@@ -435,7 +435,7 @@ return [
         [
             'text'       => 'Registro por Vocalía',
             'icon' => 'fas fa-book-reader',
-            'url'        => '/infoweb',
+            'url'        => '/vocalia',
         ],
         ['header' => 'INFORMACIÓN'],
         [

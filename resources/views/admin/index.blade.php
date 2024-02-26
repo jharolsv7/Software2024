@@ -49,7 +49,7 @@
         const ctxIngresosEgresos = document.getElementById('myChartIngresosEgresos');
 
         new Chart(ctxIngresosEgresos, {
-            type: 'line',
+            type: 'bar',
             data: {
                 labels: {!! json_encode($labels) !!},
                 datasets: [{
