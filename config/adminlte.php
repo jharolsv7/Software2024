@@ -150,7 +150,7 @@ return [
 
     'layout_topnav' => null,
     'layout_boxed' => null,
-    'layout_fixed_sidebar' => null,
+    'layout_fixed_sidebar' => true,
     'layout_fixed_navbar' => null,
     'layout_fixed_footer' => null,
     'layout_dark_mode' => null,
@@ -259,7 +259,7 @@ return [
     'register_url' => 'register',
     'password_reset_url' => 'password/reset',
     'password_email_url' => 'password/email',
-    'profile_url' => false,
+    'profile_url' => 'user/profile',
 
     /*
     |--------------------------------------------------------------------------
@@ -316,56 +316,126 @@ return [
             'route'         => 'admin.index',
             'icon'        => 'fas fa-home',
         ],
-        ['header' => 'TABLAS DEL TORNEO'],
+        ['header' => 'Operaciones Financieras'],   
         [
-            'text' => ' Ingresos',
-            'url'  => '/ingresos',
-            'icon' => 'fas fa-chart-line',
+            'text' => 'Tesorero',
+            'icon' => 'fas fa-money-check-alt',
+        
+            'submenu' => [
+                [
+                    'text' => ' Ingresos',
+                    'url'  => '/ingresos',
+                    'icon' => 'fas fa-chart-line',
+                ],
+                [
+                    'text' => 'Egresos',
+                    'url'  => '/egresos',
+                    'icon' => 'fa fa-arrow-circle-down',
+                ],
+                [
+                    'text' => 'Inscripcion',
+                    'url'  => '/inscripcion',
+                    'icon' => 'fab fa-wpforms',
+                ]
+            ]
         ],
+        ['header' => 'Equipos y Jugadores'],    
         [
-            'text' => 'Egresos',
-            'url'  => '/egresos',
-            'icon' => 'fa fa-arrow-circle-down',
+            'text' => 'Gestión de Tablas',
+            'icon' => 'fas fa-plus',
+        
+            'submenu' => [
+                [
+                    'text' => 'Equipos',
+                    'url'  => '/equipos',
+                    'icon' => 'fas fa-users',
+                ],
+                [
+                    'text' => 'Jugador',
+                    'url'  => '/jugador',
+                    'icon' => 'fas fa-user-plus',
+                ],
+                [
+                    'text' => 'Goleadores',
+                    'url'  => '/goleadores',
+                    'icon' => 'fas fa-medal',
+                ]
+            ]
+        ],       
+        ['header' => 'Campeonato'],
+        [
+            'text' => 'Torneo',
+            'icon' => 'fas fa-list-alt',
+        
+            'submenu' => [
+                [
+                    'text' => 'Fases del Torneo',
+                    'url'  => '/fase',
+                    'icon' => 'fab fa-megaport',
+                ],
+                [
+                    'text' => 'Partidos',
+                    'url'  => '/partidos',
+                    'icon' => 'fas fa-volleyball-ball',
+                ]
+            ]
         ],
+        ['header' => 'Penalizaciones'],
         [
-            'text' => 'Equipos',
-            'url'  => '/equipos',
-            'icon' => 'fas fa-users',
+            'text' => 'Sanciones',
+            'icon' => 'fab fa-creative-commons-nc',
+        
+            'submenu' => [
+                [
+                    'text' => 'Sanciones del Jugador',
+                    'url'  => '/sancionjugador',
+                    'icon' => 'fas fa-user-minus',
+                ],
+                [
+                    'text' => 'Sanciones del Equipo',
+                    'url'  => '/sancionequipo',
+                    'icon' => 'fas fa-ban',
+                ]
+            ]
         ],
+        ['header' => 'Reportes'],    
         [
-            'text' => 'Jugador',
-            'url'  => '/jugador',
-            'icon' => 'fas fa-user-plus',
+            'text' => 'Descargar Reportes',
+            'icon' => 'fas fa-file-download',
+        
+            'submenu' => [
+                [
+                    'text' => 'Equipos',
+                    'url'  => '/equiposreporte',
+                    'icon' => 'fas fa-clipboard',
+                ],
+                [
+                    'text' => 'Sanción del Jugador',
+                    'url'  => '/sancionjugadoreporte',
+                    'icon' => 'fas fa-child',
+                ],
+                [
+                    'text' => 'Sanción del Equipo',
+                    'url'  => '/sancionequiporeporte',
+                    'icon' => 'far fa-futbol',
+                ],
+                [
+                    'text' => 'Goleadores',
+                    'url'  => '/goleadoresreporte',
+                    'icon' => 'fas fa-crown',
+                ],
+                [
+                    'text' => 'Balance Financiero',
+                    'url'  => '/balancereporte',
+                    'icon' => 'fas fa-donate',
+                ]
+            ]
         ],
+        ['header' => 'Vocalía'],
         [
-            'text' => 'Partidos',
-            'url'  => '/partidos',
-            'icon' => 'fas fa-volleyball-ball',
-        ],
-        [
-            'text' => 'Inscripcion',
-            'url'  => '/inscripcion',
-            'icon' => 'fab fa-wpforms',
-        ],
-        [
-            'text' => 'Sanciones del Jugador',
-            'url'  => '/sancionjugador',
-            'icon' => 'fas fa-user-minus',
-        ],
-        [
-            'text' => 'Sanciones del Equipo',
-            'url'  => '/sancionequipo',
-            'icon' => 'fas fa-ban',
-        ],
-        [
-            'text' => 'Goleadores',
-            'url'  => '/goleadores',
-            'icon' => 'fas fa-medal',
-        ],
-        [
-            'text' => 'Fases del Torneo',
-            'url'  => '/fase',
-            'icon' => 'fab fa-megaport',
+            'text'       => 'Registro por Vocalía',
+            'icon' => 'fas fa-book-reader',
+            'url'        => '/infoweb',
         ],
         ['header' => 'INFORMACIÓN'],
         [
