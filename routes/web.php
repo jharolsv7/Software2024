@@ -2,6 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\InformeControllerSancionJugador;
+use App\Http\Controllers\InformeControllerSancionEquipo;
+use App\Http\Controllers\InformeControllerGoleadores;
+use App\Http\Controllers\InformeControllerEquipo;
+use App\Http\Controllers\InformeControllerBalance;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +38,12 @@ Route::get('/inicio', [AdminController::class, 'index'])->name('admin.index');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('generar-pdf', [InformeControllerEquipo::class, 'generarPDF'])->name('informe.generarPDF');
+Route::get('generar-pdf-sancion-jugador', [InformeControllerSancionJugador::class, 'generarPDF'])->name('informe.generarPDFSancionJugador');
+Route::get('generar-pdf-sancion-equipo', [InformeControllerSancionEquipo::class, 'generarPDF'])->name('informe.generarPDFSancionEquipor');
+Route::get('generar-pdf-goleadores', [InformeControllerGoleadores::class, 'generarPDF'])->name('informe.generarPDFGoleadores');
+Route::get('generar-pdf-balance', [InformeControllerBalance::class, 'generarPDF'])->name('informe.generarPDFBalance');
+
 
 //Route Hooks - Do not delete//
 	Route::view('goleadores', 'livewire.goleadores.index')->middleware('auth');
@@ -46,3 +58,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 	Route::view('equipos', 'livewire.equipos.index')->middleware('auth');
 	Route::view('egresos', 'livewire.egresos.index')->middleware('auth');
 	Route::view('ingresos', 'livewire.ingresos.index')->middleware('auth');
+	Route::view('equiposreporte', 'livewire.equipos.lista')->middleware('auth');
+	Route::view('sancionjugadoreporte', 'livewire.sancionjugadors.lista')->middleware('auth');
+	Route::view('sancionequiporeporte', 'livewire.sancionequipos.lista')->middleware('auth');
+	Route::view('goleadoresreporte', 'livewire.goleadores.lista')->middleware('auth');
+	Route::view('balancereporte', 'livewire.ingresos.lista')->middleware('auth');

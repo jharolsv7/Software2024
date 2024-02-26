@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request; // Importar la clase Request desde Illuminate\Http
+use Illuminate\Support\Facades\Auth; // Importar la clase Auth desde Illuminate\Support\Facades
 
 class LoginController extends Controller
 {
@@ -36,5 +38,18 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+    public function login(Request $request)
+    {
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+            
+            // Autenticación exitosa, redirigir al usuario a la vista personalizada
+            return view('auth.two-factor-challenge');
+        }
+
+        // Autenticación fallida
+        return back()->withErrors(['email' => 'Estas credenciales no coinciden con nuestros registros.']);
     }
 }
