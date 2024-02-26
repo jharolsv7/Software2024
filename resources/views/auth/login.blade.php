@@ -1,7 +1,21 @@
 <x-guest-layout>
+<style>
+        body {
+            background-image: url('img/login.jpg');
+            background-size: cover; /* Ajusta la imagen para cubrir todo el fondo */
+            background-position: center; /* Centra la imagen en el fondo */
+            background-repeat: no-repeat; /* Evita que la imagen se repita */
+            height: 100vh; /* Establece la altura del cuerpo al 100% de la ventana del navegador */
+            margin: 0; /* Elimina los márgenes por defecto */
+            display: flex; /* Utiliza el modelo de caja flexible para centrar contenido verticalmente */
+            justify-content: center; /* Centra el contenido horizontalmente */
+            align-items: center; /* Centra el contenido verticalmente */
+        }
+    </style>
     <x-authentication-card>
         <x-slot name="logo">
-            <x-authentication-card-logo />
+            <!-- Aquí puedes poner tu propia imagen -->
+            <img src="img/ball.png" alt="Logo Personalizado" class="w-20 h-20 mb-4 mx-auto">
         </x-slot>
 
         <x-validation-errors class="mb-4" />

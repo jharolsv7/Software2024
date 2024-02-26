@@ -1,7 +1,8 @@
 <x-guest-layout>
     <x-authentication-card>
         <x-slot name="logo">
-            <x-authentication-card-logo />
+            <!-- Aquí puedes poner tu propia imagen -->
+            <img src="img/ball.png" alt="Logo Personalizado" class="w-20 h-auto mb-4 mx-auto">
         </x-slot>
 
         <div x-data="{ recovery: false }">
