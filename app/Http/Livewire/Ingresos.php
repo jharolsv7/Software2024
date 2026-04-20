@@ -39,7 +39,9 @@ class Ingresos extends Component
     {
         $this->validate([
 		'detalles' => 'required',
-		'monto' => 'required',
+		'monto' => 'required|numeric|min:0',
+        ],[
+            'monto.min' => 'No se pueden ingresar valores negativos.',
         ]);
 
         Ingreso::create([ 
@@ -64,7 +66,9 @@ class Ingresos extends Component
     {
         $this->validate([
 		'detalles' => 'required',
-		'monto' => 'required',
+		'monto' => 'required|numeric|min:0',
+        ], [
+            'monto.min' => 'No se pueden ingresar valores negativos.',
         ]);
 
         if ($this->selected_id) {

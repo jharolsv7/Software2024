@@ -57,7 +57,9 @@ class Goleadores extends Component
         $this->validate([
 		'partido_id' => 'required',
 		'jugador_id' => 'required',
-		'goles' => 'required',
+		'goles' => 'required|integer|min:0',
+        ], [
+        'goles.min' => 'No se pueden ingresar valores negativos.',
         ]);
 
         Goleadore::create([ 
@@ -85,7 +87,9 @@ class Goleadores extends Component
         $this->validate([
 		'partido_id' => 'required',
 		'jugador_id' => 'required',
-		'goles' => 'required',
+		'goles' => 'required|integer|min:0',
+        ], [
+        'goles.min' => 'No se pueden ingresar valores negativos.',
         ]);
 
         if ($this->selected_id) {

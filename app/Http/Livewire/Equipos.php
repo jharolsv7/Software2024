@@ -71,7 +71,7 @@ public function equiposActualizados()
 
 	public function montoActualizado($monto)
     {
-        $this->InscripcionMonto = $monto;
+        $this->inscripcionMonto = $monto;
         
         // Actualizar monto en el modelo Equipo
         $equipo = Equipo::find($this->selected_id);

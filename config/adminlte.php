@@ -367,6 +367,14 @@ return [
             'url'  => '/fase',
             'icon' => 'fab fa-megaport',
         ],
+        
+        ['header' => 'VOCALÍA'],
+        [
+            'text'       => 'Registro',
+            'icon' => 'fas fa-info-circle',
+            'url'        => '/registro',
+        ],
+
         ['header' => 'INFORMACIÓN'],
         [
             'text'       => 'Información pagina',
